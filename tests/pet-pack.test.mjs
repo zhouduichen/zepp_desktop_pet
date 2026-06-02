@@ -35,6 +35,21 @@ test("validatePetPack rejects missing required actions", () => {
   assert.deepEqual(validatePetPack(broken), ["forms.baby.actions.feed is required"]);
 });
 
+test("validatePetPack rejects missing static and aod", () => {
+  const broken = structuredClone(validPack);
+  delete broken.forms.baby.static;
+  delete broken.forms.baby.aod;
+  const errors = validatePetPack(broken);
+  assert.ok(errors.includes("forms.baby.static is required"));
+  assert.ok(errors.includes("forms.baby.aod is required"));
+});
+
+test("validatePetPack rejects missing action prefix", () => {
+  const broken = structuredClone(validPack);
+  delete broken.forms.baby.actions.wakeIdle.prefix;
+  assert.deepEqual(validatePetPack(broken), ["forms.baby.actions.wakeIdle.prefix is required"]);
+});
+
 test("validatePetPack rejects long or high-fps watch-face actions", () => {
   const broken = structuredClone(validPack);
   broken.forms.baby.actions.happy = { prefix: "baby/happy_", frames: 30, fps: 20 };

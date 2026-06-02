@@ -9,12 +9,17 @@ export function validatePetPack(pack) {
   if (!pack?.forms?.baby) errors.push("forms.baby is required");
 
   const baby = pack?.forms?.baby;
+  if (baby && !baby.static) errors.push("forms.baby.static is required");
+  if (baby && !baby.aod) errors.push("forms.baby.aod is required");
   for (const actionName of REQUIRED_ACTIONS) {
     const path = `forms.baby.actions.${actionName}`;
     const action = baby?.actions?.[actionName];
     if (!action) {
       errors.push(`${path} is required`);
       continue;
+    }
+    if (!action.prefix) {
+      errors.push(`${path}.prefix is required`);
     }
     if (!Number.isInteger(action.frames) || action.frames < 8 || action.frames > 20) {
       errors.push(`${path}.frames must be between 8 and 20`);
