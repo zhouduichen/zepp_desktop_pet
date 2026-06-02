@@ -1,7 +1,6 @@
 import { DAILY_FOOD_CAP, FOOD_PER_STEPS, HISTORY_DAYS } from "./constants.js";
 import { normalizeProfile } from "./profile.js";
-
-const toNonNegativeInt = (value) => Math.max(0, Math.floor(Number(value) || 0));
+import { toNonNegativeInt } from "./helpers.js";
 
 export function settleSteps(inputProfile, today, currentSteps) {
   const profile = normalizeProfile(inputProfile, today);

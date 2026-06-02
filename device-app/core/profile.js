@@ -1,7 +1,7 @@
 import { DEFAULT_FORM_ID, DEFAULT_PET_ID, HISTORY_DAYS } from "./constants.js";
+import { toNonNegativeInt } from "./helpers.js";
 
 const DATE_KEY = /^\d{8}$/;
-const toNonNegativeInt = (value) => Math.max(0, Math.floor(Number(value) || 0));
 
 export function createDefaultProfile(today) {
   return {
