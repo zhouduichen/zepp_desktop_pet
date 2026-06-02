@@ -1,0 +1,18 @@
+{
+  "name": "zepp-pet-universe",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "validate:pack": "node scripts/validate-pet-pack.mjs pet-packs/pixel-cat/manifest.json",
+    "stage:watchface": "node scripts/stage-watchface-assets.mjs pet-packs/pixel-cat watchface-spike/assets",
+    "measure:assets": "node scripts/measure-assets.mjs pet-packs/pixel-cat"
+  },
+  "devDependencies": {
+    "@zeppos/device-types": "^3.0.0"
+  },
+  "dependencies": {
+    "@zeppos/zml": "^0.0.9"
+  }
+}
