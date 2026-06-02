@@ -2,6 +2,7 @@
   "name": "zepp-pet-universe-device-app",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "main": "app.js",
   "devDependencies": {
     "@zeppos/device-types": "^3.0.0"
