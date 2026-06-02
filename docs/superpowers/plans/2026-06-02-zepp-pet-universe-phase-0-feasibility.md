@@ -4,7 +4,7 @@
 
 **Goal:** Build and measure a one-pet Zepp OS prototype that proves the light watch-face interaction model, the companion Mini Program settlement model, the asset contract, and the supported state-sharing path before the full product is implemented.
 
-**Architecture:** Keep the uncertain watch-face runtime isolated under `watchface-spike/` and the API_LEVEL 3.0 device Mini Program under `device-app/`. Put deterministic growth, food, profile, and pet-pack logic in `core/` so Node tests can verify the product rules without a watch simulator. Record physical-device findings in `docs/validation/phase-0-device-spike.md`; the plan does not assume undocumented cross-runtime storage or runtime asset downloads.
+**Architecture:** Keep the uncertain watch-face runtime isolated under `watchface-spike/` and the API_LEVEL 3.0 device Mini Program under `device-app/`. Put deterministic profile and settlement logic in `device-app/core/`, and keep repository-level pet-pack validation in `core/`, so Node tests can verify product rules without a watch simulator. Record physical-device findings in `docs/validation/phase-0-device-spike.md`; the plan does not assume undocumented cross-runtime storage or runtime asset downloads.
 
 **Tech Stack:** Zepp OS V3 device Mini Program APIs (`@zos/ui`, `@zos/sensor`, `@zos/storage`), JavaScript watch-face APIs (`hmUI`, `hmSensor`), Node.js built-in test runner, Zeus CLI, PNG sprite sequences.
 
