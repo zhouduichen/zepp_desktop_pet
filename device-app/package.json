@@ -1,0 +1,12 @@
+{
+  "name": "zepp-pet-universe-device-app",
+  "version": "0.0.1",
+  "private": true,
+  "main": "app.js",
+  "devDependencies": {
+    "@zeppos/device-types": "^3.0.0"
+  },
+  "dependencies": {
+    "@zeppos/zml": "^0.0.9"
+  }
+}
