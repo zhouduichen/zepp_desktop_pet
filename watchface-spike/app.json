@@ -1,0 +1,39 @@
+{
+  "configVersion": "v3",
+  "app": {
+    "appId": 1099992,
+    "appName": "Pet Universe Face Spike",
+    "appType": "watchface",
+    "version": { "code": 1, "name": "0.0.1" },
+    "vender": "zepp",
+    "description": "Pet Universe watch-face feasibility spike"
+  },
+  "permissions": [],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "3.0.0",
+      "target": "3.0.0",
+      "minVersion": "3.0"
+    }
+  },
+  "targets": {
+    "gt.r": {
+      "module": {
+        "watchface": { "path": "index", "main": 1, "lockscreen": 1 }
+      },
+      "platforms": [{ "st": "r" }],
+      "designWidth": 480
+    },
+    "gt.s": {
+      "module": {
+        "watchface": { "path": "index", "main": 1, "lockscreen": 1 }
+      },
+      "platforms": [{ "st": "s" }],
+      "designWidth": 390
+    }
+  },
+  "i18n": {
+    "en-US": { "appName": "Pet Universe Face Spike" }
+  },
+  "defaultLanguage": "en-US"
+}
