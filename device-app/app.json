@@ -4,9 +4,13 @@
     "appId": 1099991,
     "appName": "Pet Universe Spike",
     "appType": "app",
-    "version": { "code": 1, "name": "0.0.1" },
+    "version": {
+      "code": 1,
+      "name": "0.0.1"
+    },
     "vender": "zepp",
-    "description": "Pet Universe feasibility spike"
+    "description": "Pet Universe feasibility spike",
+    "icon": "icon.png"
   },
   "permissions": [
     "data:os.device.info",
@@ -25,24 +29,38 @@
     "gt.r": {
       "module": {
         "page": {
-          "pages": ["page/home/home"]
+          "pages": [
+            "page/home/home"
+          ]
         }
       },
-      "platforms": [{ "st": "r" }],
+      "platforms": [
+        {
+          "st": "r"
+        }
+      ],
       "designWidth": 480
     },
     "gt.s": {
       "module": {
         "page": {
-          "pages": ["page/home/home"]
+          "pages": [
+            "page/home/home"
+          ]
         }
       },
-      "platforms": [{ "st": "s" }],
+      "platforms": [
+        {
+          "st": "s"
+        }
+      ],
       "designWidth": 390
     }
   },
   "i18n": {
-    "en-US": { "appName": "Pet Universe Spike" }
+    "en-US": {
+      "appName": "Pet Universe Spike"
+    }
   },
   "defaultLanguage": "en-US"
 }
