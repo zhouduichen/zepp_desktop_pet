@@ -1,64 +1,78 @@
 # Sprite Generation Report
 
-**Date:** 2026-06-02
-**Project:** Zepp Pet Universe — Phase 0
-**Task:** Release-candidate baby pixel-cat sprite sequence
+Date: 2026-06-04
+Project: Zepp Pet Universe Phase 0
+Task: Release-candidate baby pixel-cat sprite sequence
 
-## Summary
+## Status
 
-Generated 48 real pixel-art 32x32 RGBA PNG frames plus `static.png` and `aod.png` for the Pixel Cat baby form. All files are stored under `pet-packs/pixel-cat/baby/`.
+`DONE_WITH_CONCERNS`
 
-## Key Constraints Verified
+The previous placeholder-style pixel-cat assets have been replaced with a higher-fidelity
+pixel mascot candidate. The new frames are generated from a deterministic 32 x 32
+pixel-art grid and scaled to 128 x 128 PNG files with transparent backgrounds for clean
+watch-face scaling.
+
+## Files
+
+- Canonical source assets: `pet-packs/pixel-cat/baby/*.png`
+- Watch-face generated mirrors:
+  - `watchface-spike/assets/gt.r/pixel-cat/baby/*.png`
+  - `watchface-spike/assets/gt.s/pixel-cat/baby/*.png`
+- Generator: `scripts/create-wiring-pet-assets.mjs`
+- Quality test: `tests/pet-asset-quality.test.mjs`
+
+## Visual Constraints
 
 | Constraint | Result |
-|---|---|
-| Apparent sprite complexity | 24-32 px (centered in 32x32 canvas) |
-| Palette | 5 colors: orange (#ff8c00), dark orange (#cc6600), blush (#ffcc80), white, black |
-| Transparent background | Every frame uses alpha channel with transparent padding |
-| Consistent anchor/scale | Head radius 7x6, body at fixed offset; per-frame deltas only |
-| No gradients/fur/text | Flat color fills with ellipse/triangle drawing only |
-| AOD recognizability | Minimal gray silhouette with ear dots and eye dots |
-| Same pixel dimensions | All frames are 32x32 RGBA |
-| First/last clean transition | `static()` params match frame 0 and last frame of each sequence |
-| `wake_0.png` = AOD-safe fallback | Shares exact pixel data with `aod.png` (same 152-byte file size) |
+| --- | --- |
+| Apparent sprite complexity | 32 px source grid, scaled to 128 px PNG |
+| Palette | Flat orange, cream, white, pink, outline, and AOD grays |
+| Transparent background | Verified by transparent-corner asset test |
+| Strong silhouette | Thick outline, visible ears, tail, body, paws, and face |
+| No dense rendering | No gradients, text, logos, fur texture, or painterly shading |
+| AOD recognizability | Separate low-pixel gray silhouette with ears, body, tail, and face marks |
+| Frame variation | Each action sequence has at least three distinct frames |
+| Runtime constraints | 8-12 FPS manifest values and 8-20 frames per action retained |
 
 ## Animations Produced
 
-| Sequence | Frames | FPS | Motion description |
-|---|---|---|---|
-| `static.png` | 1 | — | Calm idle: round head, triangle ears, dot eyes, small body |
-| `aod.png` | 1 | — | Gray silhouette, minimal eye dots for watch-face always-on-display |
-| `wake_0..7` | 8 | 8 | Eyes closed→open (frames 0-2), tiny body stretch (3-5), return to calm (6-7) |
-| `tap_0..7` | 8 | 8 | Head tilts right, ears and pupils shift, returns to center |
-| `feed_0..11` | 12 | 10 | Head lowers toward food (0-3), bite with slight stretch (4-7), raises back (8-11) |
-| `happy_0..9` | 10 | 10 | Squash (compress) then stretch (bounce up) in a compact bounce cycle |
-| `no_food_0..7` | 8 | 8 | Curious head tilt left→right→center, pupils track tilt direction |
-
-## Generation Approach
-
-The generation script `scripts/generate-release-sprites.mjs` uses raw Node.js PNG encoding (zlib for IDAT compression, manual CRC, no external dependencies). Each frame is built from composited primitives:
-
-1. **Layer 1 - Body:** Ellipse at bottom-center (y=23, rx=6, ry=4) in dark orange with orange fill
-2. **Layer 2 - Ears:** Two triangles above the head, drawn with outline+inner fill
-3. **Layer 3 - Head:** Ellipse at center (y=11, rx=7, ry=6) with outline
-4. **Details:** Cheek blush, eyes (white 2x1 + black 1x1 pupil), nose, mouth
-
-Per-frame parameters (eyeOpen, hx/hy offset, squash, pxOff pupil offset, earDx tilt) vary each frame to create readable animation at watch scale.
+| Sequence | Frames | FPS | Motion |
+| --- | ---: | ---: | --- |
+| `static.png` | 1 | n/a | Calm orange cat idle frame |
+| `aod.png` | 1 | n/a | Static low-pixel silhouette |
+| `wake_0..7` | 8 | 8 | Eyes open, tiny stretch, return to calm |
+| `tap_0..7` | 8 | 8 | Head tilt and small reaction |
+| `feed_0..11` | 12 | 10 | Food dot approaches, bite, happy return |
+| `happy_0..9` | 10 | 10 | Compact bounce and paw lift |
+| `no_food_0..7` | 8 | 8 | Curious left/right head tilt |
 
 ## Asset Metrics
 
-- **Total files:** 49 (48 sprites + manifest.json)
-- **Total size:** 9,824 bytes (~9.6 KB)
-- **Average frame size:** ~190 bytes
-- **Smallest:** `aod.png` / `wake_0.png` (152 bytes)
-- **Largest:** `wake_4.png` (208 bytes)
+- Total files: 49
+- Total size: 31,203 bytes
+- Preview sheet: `zeus-test/pixel-cat-preview.png` (local scratch, ignored by git)
 
-## Validation Pipeline
+## Verification
 
-All steps passed:
+Latest local verification:
 
-1. `node scripts/generate-release-sprites.mjs` — generated 48 frames
-2. `node scripts/validate-pet-pack.mjs pet-packs/pixel-cat/manifest.json` — valid pet pack
-3. `node scripts/stage-watchface-assets.mjs pet-packs/pixel-cat watchface-spike/assets` — staged to `gt.r` and `gt.s`
-4. `node --test tests/*.test.mjs` — all 5 tests pass
-5. Visual pixel inspection confirmed cat shape, correct colors, and frame variation
+```powershell
+node scripts\create-wiring-pet-assets.mjs
+node --test tests\pet-asset-quality.test.mjs
+npm.cmd run stage:watchface
+npm.cmd run measure:assets
+```
+
+Results:
+
+- Asset quality test: PASS, 3/3.
+- Watch-face staging: PASS, staged for `gt.r` and `gt.s`.
+- Asset measurement: PASS, 49 files / 31,203 bytes.
+
+## Remaining Risks
+
+- This is a deterministic local release candidate, not a human-reviewed final launch
+  roster asset.
+- Physical watch review is still required for wrist-distance readability, AOD lit-pixel
+  behavior, animation smoothness, memory impact, and battery impact.

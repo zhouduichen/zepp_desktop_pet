@@ -55,8 +55,8 @@ Program.
 | app.json schema validation | PASS | `permissions` field required by validator; added empty array. Observer pattern: schema after `permissions: []` no longer rejected the manifest. |
 | app.js requirement | PASS | Build requires `app.js` in watchface project root (even for watchface type). Added lifecycle shell. |
 | Rollup JS transform | PASS | Both `app.js` and `index.js` transformed without syntax or API errors. The `hmUI`, `hmSensor`, `hmSetting` globals and `CLICK_DOWN` event used in `index.js` validated by the bundler. |
-| zpm package (dist/) | PASS | `NODE_OPTIONS=--require D:\huami\desktop_pet\patch-zpm.cjs` with `zeus.cmd build` on Node v24.15.0 produced `watchface-spike/dist/1099992-Pet_Universe_Face_Spike-0.0.1-20260604201005.zab` (384,572 bytes). |
-| staged pet assets | PASS | The single `gt` target declares round (`r`) and square (`s`) platforms; generated mirrors live under `assets/gt.r/` and `assets/gt.s/`. The built package includes `assets/pixel-cat/baby/*.png`; PNG2TGA converted 48 files per build target. |
+| zpm package (dist/) | PASS | `NODE_OPTIONS=--require D:\huami\desktop_pet\patch-zpm.cjs` with `zeus.cmd build` on Node v24.15.0 produced `watchface-spike/dist/1099992-Pet_Universe_Face_Spike-0.0.1-20260604213031.zab` (951,569 bytes). |
+| staged pet assets | PASS | The single `gt` target declares round (`r`) and square (`s`) platforms; generated mirrors live under `assets/gt.r/` and `assets/gt.s/`. Every built `device.zip` inspected inside the latest `.zab` contains `assets/pixel-cat/manifest.json` and 48 `assets/pixel-cat/baby/*.png` frames. |
 | resize warning | DONE_WITH_CONCERNS | Build still logs `RESIZE Error: Input file contains unsupported image format` once per generated target before converting pet assets. The package contains the pet assets, but the warning should be checked before store submission. |
 
 **Conclusion:** Rollup compiled the watch-face JS successfully and Zeus produced a
