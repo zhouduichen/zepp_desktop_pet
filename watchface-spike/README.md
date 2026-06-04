@@ -48,20 +48,25 @@ Program.
 
 ## Build Results
 
-**Date:** 2026-06-02
+**Last updated:** 2026-06-04
 
 | Stage | Result | Detail |
 | --- | --- | --- |
 | app.json schema validation | PASS | `permissions` field required by validator; added empty array. Observer pattern: schema after `permissions: []` no longer rejected the manifest. |
 | app.js requirement | PASS | Build requires `app.js` in watchface project root (even for watchface type). Added lifecycle shell. |
 | Rollup JS transform | PASS | Both `app.js` and `index.js` transformed without syntax or API errors. The `hmUI`, `hmSensor`, `hmSetting` globals and `CLICK_DOWN` event used in `index.js` validated by the bundler. |
-| zpm package (dist/) | BLOCKED | Build fails inside the `@zeppos/zpm` packaging library with `TypeError [ERR_INVALID_ARG_TYPE]: The "paths[2]" argument must be of type string. Received undefined`. This is a **Node.js v24 compatibility bug** in the Zeus CLI's internal `zpm` module. The code itself is structurally valid but the tooling infrastructure on this workstation cannot produce the final `.zab` package. |
+| zpm package (dist/) | PASS | `NODE_OPTIONS=--require D:\huami\desktop_pet\patch-zpm.cjs` with `zeus.cmd build` on Node v24.15.0 produced `watchface-spike/dist/1099992-Pet_Universe_Face_Spike-0.0.1-20260604113217.zab` (385,812 bytes). |
+| staged pet assets | PASS | Target keys use `gt-round` and `gt-square`; generated mirrors live under `assets/gt-round.r/` and `assets/gt-square.s/`. The built package includes `assets/pixel-cat/baby/*.png`; PNG2TGA converted 48 files per build target. |
+| resize warning | DONE_WITH_CONCERNS | Build still logs `RESIZE Error: Input file contains unsupported image format` once per generated target before converting pet assets. The package contains the pet assets, but the warning should be checked before store submission. |
 
-**Conclusion:** Rollup compiled the watch-face JS successfully, confirming all API globals (`hmUI`, `hmSensor`, `hmSetting`, `CLICK_DOWN`) pass the bundler without errors. The tap listener with `CLICK_DOWN` was **not rejected by the build**. The `zpm` packaging failure is an environment issue (Node v24 vs older `zpm` library), not a code issue. Physical-device testing on a workstation with Node v18/v20 or a compatible Zeus version is required to confirm whether the `addEventListener(CLICK_DOWN, ...)` pattern works at runtime.
+**Conclusion:** Rollup compiled the watch-face JS successfully and Zeus produced a
+`.zab` package with the pet assets included. The tap listener with `CLICK_DOWN` was
+**not rejected by the build**. Physical-device testing is still required to confirm
+whether `addEventListener(CLICK_DOWN, ...)`, `IMG_ANIM`, STEP, and AOD work at runtime.
 
 ## Verified Capability Matrix
 
-(Last updated: 2026-06-02 after `zeus build` from `watchface-spike/`.)
+(Last updated: 2026-06-04 after `zeus.cmd build` from `watchface-spike/`.)
 
 | Capability | Result | Evidence |
 | --- | --- | --- |
@@ -74,4 +79,14 @@ Program.
 
 ## Physical-Device Installation
 
-To install on a physical watch, the `zpm` packaging step must succeed. This requires:
+To install on a physical watch, use the patched local build path:
+
+```powershell
+cd D:\huami\desktop_pet\watchface-spike
+$env:NODE_OPTIONS='--require D:\huami\desktop_pet\patch-zpm.cjs'
+zeus.cmd preview
+```
+
+If the tester uses Node v18 or v20, the patch may not be required. Physical-device
+installation still requires Zeus login, QR scan, Zepp App Developer Mode, and a real
+round/square watch.

@@ -6,19 +6,21 @@ companion Device Mini Program handles settlement, history, and collection manage
 
 ## Current Status
 
-The repository is intentionally documentation-first. Product design and Phase 0
-feasibility planning are complete. Implementation must begin with the one-pet Phase 0
-spike before any full roster, evolution UI, or community work.
+The one-pet Phase 0 spike is implemented locally. Automated tests pass, pet-pack
+validation passes, and Zeus build output is produced for both the Device Mini Program
+and watch-face spike. The remaining release gate is physical-watch validation.
 
 | Area | Status |
 | --- | --- |
 | Product design | approved |
-| Phase 0 plan | ready |
+| Phase 0 plan | implemented locally |
 | AI execution runbook | ready |
-| Zepp OS API verification | not started |
-| Prototype implementation | not started |
+| Zepp OS API verification | done |
+| Prototype implementation | done with hardware concerns |
+| Automated verification | 15 Node tests passing; pet-pack validation passing |
+| Zeus build | local `.zab` packages produced with Node v24 patch |
 | Physical-watch gate | not started |
-| Phase 1 product plan | blocked by physical-watch gate |
+| Phase 1 product plan | drafted; execution blocked by physical-watch gate |
 
 ## Start Here
 

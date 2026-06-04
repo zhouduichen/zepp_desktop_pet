@@ -6,14 +6,14 @@ Date: 2026-06-02
 
 | ID | Deliverable | Owner Prompt | Depends On | Status | Exit Evidence |
 | --- | --- | --- | --- | --- | --- |
-| P0-R | Zepp OS API verification | `docs/prompts/01-doc-research.md` | approved design | ready | `docs/research/zepp-os-phase-0-api-verification.md` |
-| P0-1 | Core constants, profile, settlement | `docs/prompts/02-core-logic.md` | P0-R | ready | tests pass, 3 commits |
-| P0-2 | Canonical pet-pack pipeline | `docs/prompts/03-pet-pack-pipeline.md` | P0-1 | ready | pack validation and staged mirrors |
-| P0-3 | Device Mini Program spike | `docs/prompts/04-device-app.md` | P0-R, P0-1 | ready | Zeus preview evidence |
-| P0-4 | Watch-face spike | `docs/prompts/05-watchface-spike.md` | P0-R, P0-2 | ready | Zeus build evidence and capability matrix |
-| P0-5 | Measurement tooling and gate template | `docs/prompts/03-pet-pack-pipeline.md` | P0-2, P0-4 | ready | asset report and validation template |
+| P0-R | Zepp OS API verification | `docs/prompts/01-doc-research.md` | approved design | done | `docs/research/zepp-os-phase-0-api-verification.md` |
+| P0-1 | Core constants, profile, settlement | `docs/prompts/02-core-logic.md` | P0-R | done | tests pass |
+| P0-2 | Canonical pet-pack pipeline | `docs/prompts/03-pet-pack-pipeline.md` | P0-1 | done | pack validation and staged mirrors |
+| P0-3 | Device Mini Program spike | `docs/prompts/04-device-app.md` | P0-R, P0-1 | done with concerns | Zeus build output; physical preview still required |
+| P0-4 | Watch-face spike | `docs/prompts/05-watchface-spike.md` | P0-R, P0-2 | done with concerns | Zeus build output, packaged assets, capability matrix; physical runtime still required |
+| P0-5 | Measurement tooling and gate template | `docs/prompts/03-pet-pack-pipeline.md` | P0-2, P0-4 | done | asset report and validation template |
 | P0-6 | Physical-watch gate | `docs/prompts/08-human-device-gate.md` | P0-3, P0-4, P0-5 | human required | measured round and square results |
-| P1-P | Phase 1 plan | `docs/prompts/10-phase-1-planning.md` | P0-6 Go decision | blocked | committed measured product plan |
+| P1-P | Phase 1 plan | `docs/prompts/10-phase-1-planning.md` | P0-6 Go decision | drafted; blocked for execution | `docs/superpowers/plans/2026-06-02-zepp-pet-universe-phase-1-product.md` |
 
 ## Review Gate After Every Implementation Batch
 

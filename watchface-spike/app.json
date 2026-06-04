@@ -17,14 +17,14 @@
     }
   },
   "targets": {
-    "gt.r": {
+    "gt-round": {
       "module": {
         "watchface": { "path": "index", "main": 1, "lockscreen": 1 }
       },
       "platforms": [{ "st": "r" }],
       "designWidth": 480
     },
-    "gt.s": {
+    "gt-square": {
       "module": {
         "watchface": { "path": "index", "main": 1, "lockscreen": 1 }
       },

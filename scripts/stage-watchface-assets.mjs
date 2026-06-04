@@ -4,8 +4,14 @@ import path from "node:path";
 const source = path.resolve(process.argv[2]);
 const watchfaceAssets = path.resolve(process.argv[3]);
 
-for (const target of ["gt.r", "gt.s"]) {
-  const destination = path.join(watchfaceAssets, target, path.basename(source));
+const targets = [
+  { name: "gt-round", shape: "r" },
+  { name: "gt-square", shape: "s" }
+];
+
+for (const target of targets) {
+  const assetDirectory = `${target.name}.${target.shape}`;
+  const destination = path.join(watchfaceAssets, assetDirectory, path.basename(source));
   if (!destination.startsWith(`${watchfaceAssets}${path.sep}`)) {
     throw new Error(`refusing to stage outside ${watchfaceAssets}`);
   }
@@ -13,4 +19,4 @@ for (const target of ["gt.r", "gt.s"]) {
   await mkdir(path.dirname(destination), { recursive: true });
   await cp(source, destination, { recursive: true });
 }
-console.log("staged pixel-cat assets for gt.r and gt.s");
+console.log("staged pixel-cat assets for gt-round.r and gt-square.s");
