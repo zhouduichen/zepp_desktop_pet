@@ -17,19 +17,14 @@
     }
   },
   "targets": {
-    "gt-round": {
+    "gt": {
       "module": {
         "watchface": { "path": "index", "main": 1, "lockscreen": 1 }
       },
-      "platforms": [{ "st": "r" }],
-      "designWidth": 480
-    },
-    "gt-square": {
-      "module": {
-        "watchface": { "path": "index", "main": 1, "lockscreen": 1 }
-      },
-      "platforms": [{ "st": "s" }],
-      "designWidth": 390
+      "platforms": [
+        { "st": "r", "dw": 480 },
+        { "st": "s", "dw": 390 }
+      ]
     }
   },
   "i18n": {

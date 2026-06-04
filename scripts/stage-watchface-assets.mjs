@@ -5,8 +5,8 @@ const source = path.resolve(process.argv[2]);
 const watchfaceAssets = path.resolve(process.argv[3]);
 
 const targets = [
-  { name: "gt-round", shape: "r" },
-  { name: "gt-square", shape: "s" }
+  { name: "gt", shape: "r" },
+  { name: "gt", shape: "s" }
 ];
 
 for (const target of targets) {
@@ -19,4 +19,4 @@ for (const target of targets) {
   await mkdir(path.dirname(destination), { recursive: true });
   await cp(source, destination, { recursive: true });
 }
-console.log("staged pixel-cat assets for gt-round.r and gt-square.s");
+console.log(`staged pixel-cat assets for ${targets.map(t => `${t.name}.${t.shape}`).join(" and ")}`);

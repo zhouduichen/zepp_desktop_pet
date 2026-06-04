@@ -26,7 +26,7 @@
   },
   "debug": false,
   "targets": {
-    "gt-round": {
+    "gt": {
       "module": {
         "page": {
           "pages": [
@@ -36,25 +36,14 @@
       },
       "platforms": [
         {
-          "st": "r"
-        }
-      ],
-      "designWidth": 480
-    },
-    "gt-square": {
-      "module": {
-        "page": {
-          "pages": [
-            "page/home/home"
-          ]
-        }
-      },
-      "platforms": [
+          "st": "r",
+          "dw": 480
+        },
         {
-          "st": "s"
+          "st": "s",
+          "dw": 390
         }
-      ],
-      "designWidth": 390
+      ]
     }
   },
   "i18n": {
