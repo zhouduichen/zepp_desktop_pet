@@ -1,7 +1,7 @@
 # Local Follow-Up Audit
 
 Date: 2026-06-04
-Branch: `feat/pet-universe-phase-0`
+Branch: `codex/pet-universe-retry-verification`
 
 ## Status
 
@@ -34,7 +34,7 @@ App login, or manual Zepp App interaction.
 
 ## Checks
 
-Current local checks should still be run before committing this audit:
+Latest retry on 2026-06-04:
 
 ```powershell
 npm.cmd test
@@ -42,7 +42,19 @@ npm.cmd run validate:pack
 npm.cmd run stage:watchface
 npm.cmd run measure:assets
 git diff --check
+$env:NODE_OPTIONS='--require D:\huami\desktop_pet\patch-zpm.cjs'; zeus.cmd build
 ```
+
+Results:
+
+- `npm.cmd test`: PASS, 15/15 tests.
+- `npm.cmd run validate:pack`: PASS, `valid pet pack: pixel-cat`.
+- `npm.cmd run stage:watchface`: PASS, staged `pixel-cat` assets for `gt.r` and `gt.s`.
+- `npm.cmd run measure:assets`: PASS, 49 files / 9,841 bytes.
+- `git diff --check`: PASS, no whitespace errors.
+- Device App `zeus.cmd build`: PASS, latest `.zab` 99,509 bytes.
+- Watch Face `zeus.cmd build`: PASS, latest `.zab` 384,572 bytes; package inspection found 48 `assets/pixel-cat/baby/*.png` files.
+- Watch Face build still logs the known `RESIZE Error: Input file contains unsupported image format` warning before converting 48 PNG files.
 
 ## Remaining Hardware-Blocked Work
 
