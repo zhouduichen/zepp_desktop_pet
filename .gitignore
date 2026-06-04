@@ -2,3 +2,9 @@ node_modules/
 dist/
 *.log
 reports/*.json
+
+# Local experiments not part of the project
+zeus-test/
+patch-path.js
+patch-zpm.js
+
