@@ -12,6 +12,7 @@
     "validate:pack": "node scripts/validate-pet-pack.mjs pet-packs/pixel-cat/manifest.json",
     "validate:roster": "node scripts/validate-roster-packs.mjs pet-packs",
     "stage:watchface": "node scripts/stage-watchface-assets.mjs pet-packs watchface-spike/assets",
+    "stage:device": "node scripts/stage-device-assets.mjs pet-packs device-app/assets",
     "measure:assets": "node scripts/measure-assets.mjs pet-packs"
   },
   "devDependencies": {

@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "pixel-cat",
+  "name": "Pixel Cat",
+  "author": "Zepp Pet Universe",
+  "version": "0.0.1",
+  "minimumApiLevel": "3.0",
+  "screenShapes": [
+    "r",
+    "s"
+  ],
+  "forms": {
+    "baby": {
+      "static": "baby/static.png",
+      "aod": "baby/aod.png",
+      "actions": {
+        "wakeIdle": {
+          "prefix": "baby/wake_",
+          "frames": 8,
+          "fps": 8
+        },
+        "tapReact": {
+          "prefix": "baby/tap_",
+          "frames": 8,
+          "fps": 8
+        },
+        "feed": {
+          "prefix": "baby/feed_",
+          "frames": 12,
+          "fps": 10
+        },
+        "happy": {
+          "prefix": "baby/happy_",
+          "frames": 10,
+          "fps": 10
+        },
+        "noFood": {
+          "prefix": "baby/no_food_",
+          "frames": 8,
+          "fps": 8
+        }
+      }
+    }
+  }
+}
