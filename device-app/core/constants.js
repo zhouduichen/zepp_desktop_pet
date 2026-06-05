@@ -1,5 +1,12 @@
 export const FOOD_PER_STEPS = 1000;
 export const DAILY_FOOD_CAP = 10;
 export const HISTORY_DAYS = 30;
+export const SCORING_WINDOW_DAYS = 7;
+export const EXPERIENCE_PER_FEED = 10;
+export const AFFINITY_PER_FEED = 5;
+export const BABY_TO_TEEN_EXPERIENCE = 200;
+export const TEEN_TO_MATURE_EXPERIENCE = 500;
+export const CLOSE_SCORE_THRESHOLD = 15;
 export const DEFAULT_PET_ID = "pixel-cat";
 export const DEFAULT_FORM_ID = "baby";
+export const SCHEMA_VERSION_V1 = 2;
