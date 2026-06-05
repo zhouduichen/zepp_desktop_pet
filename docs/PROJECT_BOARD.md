@@ -15,6 +15,16 @@ Date: 2026-06-02
 | P0-6 | Physical-watch gate | `docs/prompts/08-human-device-gate.md` | P0-3, P0-4, P0-5 | human required | measured round and square results |
 | P1-P | Phase 1 plan | `docs/prompts/10-phase-1-planning.md` | P0-6 Go decision | drafted; blocked for execution | `docs/superpowers/plans/2026-06-02-zepp-pet-universe-phase-1-product.md` |
 
+## Simulator-Safe Phase 1 Progress
+
+| ID | Deliverable | Depends On | Status | Exit Evidence |
+| --- | --- | --- | --- | --- |
+| P1-C1 | V1 constants, scoring, collection, evolution, and form-switch core | P1-P draft | done with concerns | `docs/reports/2026-06-05-phase-1-core-worker-report.md`; `npm.cmd test` PASS, 62 tests |
+
+This does not replace the P0-6 physical-watch gate. It only records deterministic
+JavaScript work that can be validated without QR scan, Zepp App login, or a physical
+watch.
+
 ## Review Gate After Every Implementation Batch
 
 1. Run `docs/prompts/06-spec-review.md`.

@@ -44,8 +44,8 @@ physical-watch gate.
 
 ## Product State
 
-The project is still in Phase 0 plus local simulator follow-ups. It is not a finished
-Phase 1 product.
+The project is in Phase 0 plus a simulator-safe Phase 1 core slice. It is not a
+finished Phase 1 product because the P0-6 physical-watch gate is still incomplete.
 
 Completed or locally working:
 
@@ -67,14 +67,25 @@ Completed or locally working:
 - `PET` increases AFF.
 - `PLAY` increases EXP/AFF.
 - `NEXT` cycles through the five starter pets and persists selected pet id.
+- V1 Phase 1 constants are implemented:
+  seven-day scoring window, feed EXP/AFF rewards, Baby to Teen threshold, Teen to
+  mature threshold, close-score threshold, and schema version.
+- Deterministic active, steady, and explorer scoring is implemented in `core/scoring.js`
+  and mirrored into `device-app/core/scoring.js`.
+- Collection unlock helpers are implemented in `core/collection.js` and mirrored into
+  `device-app/core/collection.js`.
+- Baby to Teen and Teen to mature progression logic is implemented in
+  `core/evolution.js`, including close-score user choice resolution.
+- Form switch eligibility is implemented in `core/form-switch.js`, allowing only
+  permanently unlocked forms to be selected.
 - Watch-face spike builds locally and packages pet assets, but physical runtime behavior
   is still not verified.
 
 Not implemented yet:
 
-- Baby to Teen upgrade.
-- Active, Steady, Explorer mature branches.
-- Rare and Secret forms.
+- Device Mini Program UI wiring for Baby to Teen upgrade.
+- Device Mini Program UI wiring for Active, Steady, and Explorer mature branch choice.
+- Rare and Secret final forms, final assets, and UI.
 - Full collection pages.
 - Seven-day history UI.
 - Form switching UI.
@@ -174,6 +185,18 @@ Latest known verification from commit `e342429`:
   `device-app/dist/1099991-Pet_Universe_Spike-0.0.1-20260605220814.zab`,
   5,785,663 bytes.
 
+Latest Phase 1 core verification from commit `9f19472`:
+
+- `npm.cmd test`: PASS, 62 tests.
+- `node --test tests\constants-v1.test.mjs`: PASS.
+- `node --test tests\scoring.test.mjs`: PASS.
+- `node --test tests\collection.test.mjs`: PASS.
+- `node --test tests\evolution.test.mjs`: PASS.
+- `node --test tests\form-switch.test.mjs`: PASS.
+- `git diff --check`: PASS, with line-ending warnings for existing generated pet-pack
+  manifest files.
+- No Zeus build or simulator preview was run for this core-only batch.
+
 ## What To Test Right Now
 
 Only simulator-friendly Phase 0 behavior should be tested right now:
@@ -191,7 +214,7 @@ Only simulator-friendly Phase 0 behavior should be tested right now:
 
 Do not treat these as complete product tests:
 
-- Upgrade/evolution tests.
+- Upgrade/evolution UI tests.
 - Rare or Secret form tests.
 - AOD tests.
 - Battery tests.
@@ -211,7 +234,13 @@ Do not treat these as complete product tests:
 - `docs/superpowers/plans/2026-06-02-zepp-pet-universe-phase-1-product.md`:
   Phase 1 draft, blocked for execution until the physical-watch gate.
 - `docs/reports/2026-06-05-device-app-pet-interactions-worker-report.md`:
-  latest Device Mini Program interaction follow-up.
+  Device Mini Program interaction follow-up.
+- `docs/reports/2026-06-05-phase-1-core-worker-report.md`:
+  latest Phase 1 core worker report.
+- `core/scoring.js`: active, steady, and explorer scoring.
+- `core/collection.js`: form unlock and collection helpers.
+- `core/evolution.js`: Baby/Teen/Mature evolution progression and close-score choice.
+- `core/form-switch.js`: unlocked-form selection rules.
 - `device-app/page/home/home.js`: current simulator UI behavior.
 - `device-app/core/interactions.js`: FEED/PET/PLAY logic.
 - `device-app/core/pets.js`: starter roster and pet switching.
@@ -258,8 +287,10 @@ If the user asks for simulator improvements:
 
 If the user asks for upgrades/evolution:
 
-1. Treat it as a Phase 1 slice unless explicitly scoped as a simulator-only prototype.
-2. Add deterministic core tests first for thresholds and branch choice.
+1. Use the existing deterministic core modules first:
+   `core/scoring.js`, `core/collection.js`, `core/evolution.js`, and
+   `core/form-switch.js`.
+2. Wire Device Mini Program UI as a simulator-only Phase 1 integration slice.
 3. Avoid claiming full Phase 1 completion without the physical-watch gate.
 
 If the user asks for release readiness:
