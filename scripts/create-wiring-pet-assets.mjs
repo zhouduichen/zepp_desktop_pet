@@ -14,6 +14,7 @@ const colors = {
   shadowOrange: [181, 84, 29, 255],
   cream: [255, 232, 178, 255],
   white: [255, 248, 224, 255],
+  eyeBlue: [74, 174, 255, 255],
   pink: [246, 132, 138, 255],
   aod: [112, 112, 96, 255],
   aodDim: [64, 64, 56, 255]
@@ -108,22 +109,30 @@ function drawEar(grid, side, dx, dy, fillColor = colors.lightOrange) {
 }
 
 function drawFace(grid, pose, hx, hy) {
-  ellipse(grid, 16 + hx, 15 + hy, 4.6, 3.1, colors.cream);
+  ellipse(grid, 16 + hx, 15 + hy, 5.2, 3.4, colors.cream);
   setPixel(grid, 16 + hx, 14 + hy, colors.outline);
   setPixel(grid, 15 + hx, 15 + hy, colors.outline);
   setPixel(grid, 17 + hx, 15 + hy, colors.outline);
 
   if (pose.eyes === "closed") {
-    rect(grid, 11 + hx, 12 + hy, 3, 1, colors.outline);
-    rect(grid, 19 + hx, 12 + hy, 3, 1, colors.outline);
+    rect(grid, 10 + hx, 12 + hy, 5, 1, colors.outline);
+    rect(grid, 18 + hx, 12 + hy, 5, 1, colors.outline);
   } else if (pose.eyes === "half") {
-    rect(grid, 12 + hx, 12 + hy, 2, 1, colors.outline);
-    rect(grid, 20 + hx, 12 + hy, 2, 1, colors.outline);
-  } else {
-    rect(grid, 11 + hx, 11 + hy, 2, 3, colors.outline);
-    rect(grid, 20 + hx, 11 + hy, 2, 3, colors.outline);
+    rect(grid, 10 + hx, 11 + hy, 5, 2, colors.outline);
+    rect(grid, 18 + hx, 11 + hy, 5, 2, colors.outline);
+    rect(grid, 11 + hx, 11 + hy, 3, 1, colors.eyeBlue);
+    rect(grid, 19 + hx, 11 + hy, 3, 1, colors.eyeBlue);
     setPixel(grid, 11 + hx, 11 + hy, colors.white);
-    setPixel(grid, 20 + hx, 11 + hy, colors.white);
+    setPixel(grid, 19 + hx, 11 + hy, colors.white);
+  } else {
+    rect(grid, 10 + hx, 10 + hy, 5, 5, colors.outline);
+    rect(grid, 18 + hx, 10 + hy, 5, 5, colors.outline);
+    rect(grid, 11 + hx, 11 + hy, 3, 3, colors.eyeBlue);
+    rect(grid, 19 + hx, 11 + hy, 3, 3, colors.eyeBlue);
+    rect(grid, 11 + hx, 10 + hy, 2, 2, colors.white);
+    rect(grid, 19 + hx, 10 + hy, 2, 2, colors.white);
+    setPixel(grid, 13 + hx, 13 + hy, colors.outline);
+    setPixel(grid, 21 + hx, 13 + hy, colors.outline);
   }
 
   if (pose.mouth === "happy") {
@@ -149,11 +158,11 @@ function drawCat(pose = {}) {
   const hy = pose.headY ?? 0;
   const tailLift = pose.tailLift ?? 0;
 
-  line(grid, 22, 21 + bodyY, 28, 17 + bodyY - tailLift, 2.4, colors.outline);
-  line(grid, 28, 17 + bodyY - tailLift, 27, 24 + bodyY - tailLift, 2.4, colors.outline);
-  line(grid, 22, 21 + bodyY, 28, 17 + bodyY - tailLift, 1.4, colors.orange);
-  line(grid, 28, 17 + bodyY - tailLift, 27, 24 + bodyY - tailLift, 1.4, colors.orange);
-  rect(grid, 26, 18 + bodyY - tailLift, 2, 1, colors.shadowOrange);
+  line(grid, 22, 22 + bodyY, 28, 18 + bodyY - tailLift, 2.5, colors.outline);
+  ringEllipse(grid, 28, 21 + bodyY - tailLift, 4.4, 5.0, colors.outline);
+  line(grid, 22, 22 + bodyY, 28, 18 + bodyY - tailLift, 1.5, colors.orange);
+  ringEllipse(grid, 28, 21 + bodyY - tailLift, 3.0, 3.5, colors.orange);
+  rect(grid, 26, 17 + bodyY - tailLift, 2, 1, colors.lightOrange);
 
   ellipse(grid, 16, 22 + bodyY, 7.8, 7.2, colors.outline);
   ellipse(grid, 16, 21 + bodyY, 6.5, 6.4, colors.orange);
@@ -172,8 +181,8 @@ function drawCat(pose = {}) {
 
   drawEar(grid, "left", hx, hy);
   drawEar(grid, "right", hx, hy);
-  ellipse(grid, 16 + hx, 12 + hy, 8.6, 7.2, colors.outline);
-  ellipse(grid, 16 + hx, 12 + hy, 7.2, 5.9, colors.lightOrange);
+  ellipse(grid, 16 + hx, 12 + hy, 9.3, 7.9, colors.outline);
+  ellipse(grid, 16 + hx, 12 + hy, 7.9, 6.5, colors.lightOrange);
 
   rect(grid, 13 + hx, 6 + hy, 1, 4, colors.shadowOrange);
   rect(grid, 16 + hx, 5 + hy, 1, 4, colors.shadowOrange);
@@ -199,7 +208,7 @@ function drawCat(pose = {}) {
 function drawAod() {
   const grid = createGrid();
   line(grid, 22, 22, 28, 18, 1, colors.aod);
-  line(grid, 28, 18, 27, 24, 1, colors.aod);
+  ringEllipse(grid, 28, 21, 3.5, 4.0, colors.aod);
   ringEllipse(grid, 16, 22, 7.4, 6.7, colors.aod);
   polygon(grid, [[9, 9], [10, 3], [14, 9]], colors.aod);
   polygon(grid, [[18, 9], [22, 3], [23, 9]], colors.aod);

@@ -1,6 +1,6 @@
 # Sprite Generation Report
 
-Date: 2026-06-04
+Date: 2026-06-05
 Project: Zepp Pet Universe Phase 0
 Task: Release-candidate baby pixel-cat sprite sequence
 
@@ -8,10 +8,11 @@ Task: Release-candidate baby pixel-cat sprite sequence
 
 `DONE_WITH_CONCERNS`
 
-The previous placeholder-style pixel-cat assets have been replaced with a higher-fidelity
+The previous placeholder-style pixel-cat assets have been replaced with a more expressive
 pixel mascot candidate. The new frames are generated from a deterministic 32 x 32
 pixel-art grid and scaled to 128 x 128 PNG files with transparent backgrounds for clean
-watch-face scaling.
+watch-face scaling. This revision specifically improves mascot readability with larger
+eyes, stronger highlights, a rounder head, and a clearer curled-tail silhouette.
 
 ## Files
 
@@ -19,7 +20,9 @@ watch-face scaling.
 - Watch-face generated mirrors:
   - `watchface-spike/assets/gt.r/pixel-cat/baby/*.png`
   - `watchface-spike/assets/gt.s/pixel-cat/baby/*.png`
-- Generator: `scripts/create-wiring-pet-assets.mjs`
+- Generator entrypoint: `npm.cmd run generate:assets`
+- Renderer: `scripts/create-wiring-pet-assets.mjs`
+- Preview sheet: `docs/reports/pixel-cat-preview.png`
 - Quality test: `tests/pet-asset-quality.test.mjs`
 
 ## Visual Constraints
@@ -33,6 +36,7 @@ watch-face scaling.
 | No dense rendering | No gradients, text, logos, fur texture, or painterly shading |
 | AOD recognizability | Separate low-pixel gray silhouette with ears, body, tail, and face marks |
 | Frame variation | Each action sequence has at least three distinct frames |
+| Expressive mascot face | Larger blue eyes and at least 64 highlight pixels in the 128 px static frame |
 | Runtime constraints | 8-12 FPS manifest values and 8-20 frames per action retained |
 
 ## Animations Produced
@@ -50,8 +54,8 @@ watch-face scaling.
 ## Asset Metrics
 
 - Total files: 49
-- Total size: 31,203 bytes
-- Preview sheet: `zeus-test/pixel-cat-preview.png` (local scratch, ignored by git)
+- Total size: 33,104 bytes
+- Preview sheet: `docs/reports/pixel-cat-preview.png`
 
 ## Verification
 
@@ -60,15 +64,24 @@ Latest local verification:
 ```powershell
 node scripts\create-wiring-pet-assets.mjs
 node --test tests\pet-asset-quality.test.mjs
+npm.cmd run generate:assets
 npm.cmd run stage:watchface
+npm.cmd run preview:assets
 npm.cmd run measure:assets
+npm.cmd test
+npm.cmd run validate:pack
+$env:PATH='C:\Users\33135\AppData\Roaming\npm;' + $env:PATH
+$env:NODE_OPTIONS='--require D:\huami\desktop_pet\patch-zpm.cjs'
+zeus.cmd build
 ```
 
 Results:
 
-- Asset quality test: PASS, 3/3.
+- Full test suite: PASS, 20/20.
+- Asset quality test: PASS, 4/4.
 - Watch-face staging: PASS, staged for `gt.r` and `gt.s`.
-- Asset measurement: PASS, 49 files / 31,203 bytes.
+- Asset measurement: PASS, 49 files / 33,104 bytes.
+- Watch-face build: PASS, latest `.zab` size 1,019,686 bytes.
 
 ## Remaining Risks
 

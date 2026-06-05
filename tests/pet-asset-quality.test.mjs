@@ -68,6 +68,10 @@ function colorSet(image) {
   );
 }
 
+function countColor(image, color) {
+  return image.pixels.filter((pixel) => pixel.every((channel, index) => channel === color[index])).length;
+}
+
 test("pixel-cat static frame is a reviewed-size transparent pixel mascot", async () => {
   const image = await readPng("static.png");
   assert.equal(image.width, expectedSize);
@@ -86,6 +90,16 @@ test("pixel-cat static frame is a reviewed-size transparent pixel mascot", async
   const colors = colorSet(image);
   assert.ok(colors.size >= 5, `static frame has too few colors: ${colors.size}`);
   assert.ok(colors.size <= 12, `static frame has too many colors: ${colors.size}`);
+});
+
+test("pixel-cat static frame has mascot-level expressive eyes", async () => {
+  const image = await readPng("static.png");
+  const eyeHighlightPixels = countColor(image, [255, 248, 224, 255]);
+
+  assert.ok(
+    eyeHighlightPixels >= 64,
+    `static frame needs larger eye highlights for wrist readability: ${eyeHighlightPixels}`
+  );
 });
 
 test("pixel-cat AOD frame is static and low-pixel", async () => {
