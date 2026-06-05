@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import path from "node:path";
+import { PET_ROSTER } from "../device-app/core/pets.js";
 
 test("watchface target assets match all app.json platforms", async () => {
   const appJson = JSON.parse(await readFile("watchface-spike/app.json", "utf8"));
@@ -9,10 +10,12 @@ test("watchface target assets match all app.json platforms", async () => {
   for (const [targetName, target] of Object.entries(appJson.targets)) {
     for (const platform of target.platforms) {
       const shape = platform.st;
-      const assetRoot = path.join("watchface-spike", "assets", `${targetName}.${shape}`, "pixel-cat");
-      await access(path.join(assetRoot, "manifest.json"));
-      await access(path.join(assetRoot, "baby", "static.png"));
-      await access(path.join(assetRoot, "baby", "aod.png"));
+      for (const pet of PET_ROSTER) {
+        const assetRoot = path.join("watchface-spike", "assets", `${targetName}.${shape}`, pet.id);
+        await access(path.join(assetRoot, "manifest.json"));
+        await access(path.join(assetRoot, "baby", "static.png"));
+        await access(path.join(assetRoot, "baby", "aod.png"));
+      }
     }
   }
 });
