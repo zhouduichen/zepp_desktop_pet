@@ -33,7 +33,7 @@ physical-watch gate.
 - Active branch at the time this memory was written:
   `codex/pet-universe-retry-verification`
 - Latest implementation commit before this memory document:
-  `a7cf630 feat: complete simulator-safe pet product`
+  `6df3b00 feat: redesign pets and watch face boundary`
 - Main product name: Zepp Pet Universe
 - Runtime split:
   - `device-app/`: Zepp OS Device Mini Program

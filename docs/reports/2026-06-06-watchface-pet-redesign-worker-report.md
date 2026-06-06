@@ -83,7 +83,7 @@ Build or preview:
 
 ## Commits
 
-- `7c4642a feat: redesign pets and watch face boundary`
+- `6df3b00 feat: redesign pets and watch face boundary`
 
 ## Risks And Follow-Up
 
