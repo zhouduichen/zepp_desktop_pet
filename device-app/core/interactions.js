@@ -73,6 +73,8 @@ export function playPet(profile) {
   };
 }
 
-export function getInteractionFrame(petId, action = "idle") {
-  return `pets/${petId}/baby/${ACTION_FRAMES[action] ?? ACTION_FRAMES.idle}`;
+export function getInteractionFrame(petId, formIdOrAction = "baby", maybeAction) {
+  const formId = maybeAction === undefined ? "baby" : formIdOrAction;
+  const action = maybeAction === undefined ? formIdOrAction : maybeAction;
+  return `pets/${petId}/${formId}/${ACTION_FRAMES[action] ?? ACTION_FRAMES.idle}`;
 }

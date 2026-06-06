@@ -6,12 +6,14 @@ const manifestPath = path.resolve(process.argv[2]);
 const pack = JSON.parse(await readFile(manifestPath, "utf8"));
 const errors = validatePetPack(pack);
 const baseDir = path.dirname(manifestPath);
-const baby = pack.forms?.baby;
-const assetPaths = [baby?.static, baby?.aod];
+const assetPaths = [];
 
-for (const action of Object.values(baby?.actions ?? {})) {
-  for (let index = 0; index < action.frames; index += 1) {
-    assetPaths.push(`${action.prefix}${index}.png`);
+for (const form of Object.values(pack.forms ?? {})) {
+  assetPaths.push(form?.static, form?.aod);
+  for (const action of Object.values(form?.actions ?? {})) {
+    for (let index = 0; index < action.frames; index += 1) {
+      assetPaths.push(`${action.prefix}${index}.png`);
+    }
   }
 }
 

@@ -6,13 +6,17 @@ const gridSize = 64;
 const scale = 2;
 const root = path.resolve("pet-packs");
 
-const commonActions = {
-  wakeIdle: { prefix: "baby/wake_", frames: 8, fps: 8 },
-  tapReact: { prefix: "baby/tap_", frames: 8, fps: 8 },
-  feed: { prefix: "baby/feed_", frames: 12, fps: 10 },
-  happy: { prefix: "baby/happy_", frames: 10, fps: 10 },
-  noFood: { prefix: "baby/no_food_", frames: 8, fps: 8 }
-};
+const launchForms = ["baby", "teen", "active", "steady", "explorer", "rare", "secret"];
+
+function actionsFor(formId) {
+  return {
+    wakeIdle: { prefix: `${formId}/wake_`, frames: 8, fps: 8 },
+    tapReact: { prefix: `${formId}/tap_`, frames: 8, fps: 8 },
+    feed: { prefix: `${formId}/feed_`, frames: 12, fps: 10 },
+    happy: { prefix: `${formId}/happy_`, frames: 10, fps: 10 },
+    noFood: { prefix: `${formId}/no_food_`, frames: 8, fps: 8 }
+  };
+}
 
 const roster = [
   palette("pixel-cat", "Pixel Cat", "cat", {
@@ -435,11 +439,20 @@ function png(grid) {
   ]);
 }
 
-async function writeFrame(pet, name, grid) {
-  await writeFile(path.join(root, pet.id, "baby", name), png(grid));
+async function writeFrame(pet, formId, name, grid) {
+  await writeFile(path.join(root, pet.id, formId, name), png(grid));
 }
 
 function manifestFor(pet) {
+  const forms = Object.fromEntries(launchForms.map((formId) => [
+    formId,
+    {
+      static: `${formId}/static.png`,
+      aod: `${formId}/aod.png`,
+      actions: actionsFor(formId)
+    }
+  ]));
+
   return {
     schemaVersion: 1,
     id: pet.id,
@@ -448,13 +461,24 @@ function manifestFor(pet) {
     version: "0.0.1",
     minimumApiLevel: "3.0",
     screenShapes: ["r", "s"],
-    forms: {
-      baby: {
-        static: "baby/static.png",
-        aod: "baby/aod.png",
-        actions: commonActions
-      }
-    }
+    forms
+  };
+}
+
+const formBasePoses = {
+  baby: {},
+  teen: { bodyY: -1, headY: -1 },
+  active: { bodyY: -3, headY: -2, pawLift: 4, tailLift: 5, mouth: "happy", sparkle: true },
+  steady: { eyes: "half", bodyY: 1, blush: false },
+  explorer: { headX: 3, headY: -1, tailLift: 4, sparkle: true },
+  rare: { bodyY: -2, pawLift: 5, tailLift: 5, mouth: "happy", sparkle: true },
+  secret: { eyes: "half", headY: -3, headX: -2, sparkle: true }
+};
+
+function poseFor(formId, pose) {
+  return {
+    ...formBasePoses[formId],
+    ...pose
   };
 }
 
@@ -518,17 +542,22 @@ const sequences = {
 };
 
 for (const pet of roster) {
-  await mkdir(path.join(root, pet.id, "baby"), { recursive: true });
+  for (const formId of launchForms) {
+    await mkdir(path.join(root, pet.id, formId), { recursive: true });
+  }
   await writeFile(
     path.join(root, pet.id, "manifest.json"),
     `${JSON.stringify(manifestFor(pet), null, 2)}\n`
   );
-  await writeFrame(pet, "static.png", drawPet(pet));
-  await writeFrame(pet, "aod.png", drawAod(pet));
 
-  for (const [prefix, poses] of Object.entries(sequences)) {
-    for (let index = 0; index < poses.length; index += 1) {
-      await writeFrame(pet, `${prefix}_${index}.png`, drawPet(pet, poses[index]));
+  for (const formId of launchForms) {
+    await writeFrame(pet, formId, "static.png", drawPet(pet, poseFor(formId, {})));
+    await writeFrame(pet, formId, "aod.png", drawAod(pet));
+
+    for (const [prefix, poses] of Object.entries(sequences)) {
+      for (let index = 0; index < poses.length; index += 1) {
+        await writeFrame(pet, formId, `${prefix}_${index}.png`, drawPet(pet, poseFor(formId, poses[index])));
+      }
     }
   }
 }

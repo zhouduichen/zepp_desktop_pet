@@ -1,6 +1,6 @@
 # Zepp Pet Universe Project Memory
 
-Last updated: 2026-06-05
+Last updated: 2026-06-06
 
 Use this file as the first handoff document when starting a new Codex conversation for
 this repository.
@@ -44,8 +44,8 @@ physical-watch gate.
 
 ## Product State
 
-The project is in Phase 0 plus a simulator-safe Phase 1 core slice. It is not a
-finished Phase 1 product because the P0-6 physical-watch gate is still incomplete.
+The project is in Phase 0 plus a simulator-safe local product build. It is not a
+release-verified product because the P0-6 physical-watch gate is still incomplete.
 
 Completed or locally working:
 
@@ -55,14 +55,16 @@ Completed or locally working:
   under `device-app/core/`.
 - Settlement uses daily entitlement:
   `floor(currentSteps / 1000) - earnedToday`, capped at 10 food/day.
-- Five starter Baby pet packs exist:
+- Five starter pet packs exist:
   - `pixel-cat`
   - `pixel-dog`
   - `pixel-bunny`
   - `pixel-hamster`
   - `pixel-fox`
+- Each starter pack now contains `baby`, `teen`, `active`, `steady`, `explorer`,
+  `rare`, and `secret` forms.
 - The Device Mini Program simulator page now shows a pet sprite and has four controls:
-  `FEED`, `PET`, `PLAY`, and `NEXT`.
+  `FEED`, `PET`, `PLAY`, `EVO`, `FORM`, and `NEXT`.
 - `FEED` consumes food and adds EXP/AFF.
 - `PET` increases AFF.
 - `PLAY` increases EXP/AFF.
@@ -78,19 +80,19 @@ Completed or locally working:
   `core/evolution.js`, including close-score user choice resolution.
 - Form switch eligibility is implemented in `core/form-switch.js`, allowing only
   permanently unlocked forms to be selected.
+- Device Mini Program home UI is wired to evolution, close-score branch choice,
+  form switching, collection persistence, and Rare/Secret local unlocks.
+- Device Mini Program assets are staged as a lightweight UI subset, while canonical
+  `pet-packs/` and watch-face mirrors keep complete animation sequences.
 - Watch-face spike builds locally and packages pet assets, but physical runtime behavior
   is still not verified.
 
 Not implemented yet:
 
-- Device Mini Program UI wiring for Baby to Teen upgrade.
-- Device Mini Program UI wiring for Active, Steady, and Explorer mature branch choice.
-- Rare and Secret final forms, final assets, and UI.
-- Full collection pages.
-- Seven-day history UI.
-- Form switching UI.
 - True watch-face and Device Mini Program state sharing.
 - Real battery, AOD, memory, and tap behavior validation on physical watches.
+- Human visual review for the generated complete-form sprites.
+- Separate full collection/history pages beyond the compact home-screen management UI.
 
 ## User-Visible Simulator State
 
@@ -104,14 +106,18 @@ Current expected Device Mini Program screen:
 - Steps text
 - Food text
 - `AFF` and `EXP`
-- Four tap controls: `FEED`, `PET`, `PLAY`, `NEXT`
+- Six tap controls: `FEED`, `PET`, `PLAY`, `EVO`, `FORM`, `NEXT`
 
 Known behavior:
 
 - With `300 STEPS`, food should remain `0 FOOD`.
 - `1000 STEPS` earns `1 FOOD`.
 - Reopening at the same step count must not duplicate food.
-- `EXP` and `AFF` change, but the pet does not upgrade form yet.
+- `EVO` upgrades Baby to Teen when EXP reaches 200.
+- `EVO` resolves Teen to Active, Steady, or Explorer when EXP reaches 500.
+- If mature scores are close, the first buttons become branch choices.
+- `FORM` cycles through permanently unlocked forms.
+- Rare can unlock from explicit progress; Secret can unlock after hidden preconditions.
 
 ## How To Run Or Refresh The Simulator
 
@@ -197,12 +203,29 @@ Latest Phase 1 core verification from commit `9f19472`:
   manifest files.
 - No Zeus build or simulator preview was run for this core-only batch.
 
+Latest simulator-safe local product verification from 2026-06-06:
+
+- `npm.cmd test`: PASS, 72 tests.
+- `npm.cmd run validate:pack`: PASS.
+- `npm.cmd run validate:roster`: PASS, 5 packs.
+- `npm.cmd run stage:device`: PASS.
+- `npm.cmd run stage:watchface`: PASS.
+- `npm.cmd run measure:assets`: PASS, 1,685 files, 1,462,676 bytes under
+  `pet-packs`.
+- `zeus.cmd build` from `device-app/`: PASS.
+- Latest Device Mini Program package:
+  `device-app/dist/1099991-Pet_Universe_Spike-0.0.1-20260606125410.zab`,
+  5,855,865 bytes.
+
 ## What To Test Right Now
 
 Only simulator-friendly Phase 0 behavior should be tested right now:
 
 - Device Mini Program shows pet image, not only text.
 - `FEED`, `PET`, `PLAY`, and `NEXT` are clickable.
+- `EVO` upgrades when thresholds are met.
+- close-score branch choices are clickable when offered.
+- `FORM` cycles through unlocked forms.
 - `NEXT` cycles through Cat, Dog, Bunny, Hamster, and Fox.
 - Name and sprite change together.
 - `PET` increases AFF.
@@ -214,7 +237,6 @@ Only simulator-friendly Phase 0 behavior should be tested right now:
 
 Do not treat these as complete product tests:
 
-- Upgrade/evolution UI tests.
 - Rare or Secret form tests.
 - AOD tests.
 - Battery tests.
@@ -236,7 +258,9 @@ Do not treat these as complete product tests:
 - `docs/reports/2026-06-05-device-app-pet-interactions-worker-report.md`:
   Device Mini Program interaction follow-up.
 - `docs/reports/2026-06-05-phase-1-core-worker-report.md`:
-  latest Phase 1 core worker report.
+  Phase 1 core worker report.
+- `docs/reports/2026-06-06-simulator-safe-product-worker-report.md`:
+  latest simulator-safe product worker report.
 - `core/scoring.js`: active, steady, and explorer scoring.
 - `core/collection.js`: form unlock and collection helpers.
 - `core/evolution.js`: Baby/Teen/Mature evolution progression and close-score choice.
@@ -290,8 +314,9 @@ If the user asks for upgrades/evolution:
 1. Use the existing deterministic core modules first:
    `core/scoring.js`, `core/collection.js`, `core/evolution.js`, and
    `core/form-switch.js`.
-2. Wire Device Mini Program UI as a simulator-only Phase 1 integration slice.
-3. Avoid claiming full Phase 1 completion without the physical-watch gate.
+2. The Device Mini Program home UI already wires this flow; reproduce issues in the
+   simulator and add focused tests before changing behavior.
+3. Avoid claiming release readiness without the physical-watch gate.
 
 If the user asks for release readiness:
 

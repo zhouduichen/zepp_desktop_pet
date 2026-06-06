@@ -6,6 +6,7 @@ import zlib from "node:zlib";
 import { validatePetPack } from "../core/pet-pack.js";
 
 const rosterIds = ["pixel-cat", "pixel-dog", "pixel-bunny", "pixel-hamster", "pixel-fox"];
+const requiredForms = ["baby", "teen", "active", "steady", "explorer", "rare", "secret"];
 const expectedSize = 128;
 const actions = {
   wake: 8,
@@ -57,26 +58,28 @@ function opaqueCount(image) {
   return image.pixels.filter((pixel) => pixel[3] > 0).length;
 }
 
-test("starter roster contains five valid baby pet packs", async () => {
+test("starter roster contains five valid complete-form pet packs", async () => {
   for (const petId of rosterIds) {
     const manifestPath = path.join("pet-packs", petId, "manifest.json");
     const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
     assert.equal(manifest.id, petId);
     assert.deepEqual(validatePetPack(manifest), []);
 
-    const staticFrame = await readPng(path.join("pet-packs", petId, manifest.forms.baby.static));
-    const aodFrame = await readPng(path.join("pet-packs", petId, manifest.forms.baby.aod));
-    assert.equal(staticFrame.width, expectedSize, `${petId} static width`);
-    assert.equal(staticFrame.height, expectedSize, `${petId} static height`);
-    assert.equal(aodFrame.width, expectedSize, `${petId} aod width`);
-    assert.equal(aodFrame.height, expectedSize, `${petId} aod height`);
-    assert.ok(opaqueCount(aodFrame) < opaqueCount(staticFrame) * 0.4, `${petId} AOD is too dense`);
+    for (const formId of requiredForms) {
+      const staticFrame = await readPng(path.join("pet-packs", petId, manifest.forms[formId].static));
+      const aodFrame = await readPng(path.join("pet-packs", petId, manifest.forms[formId].aod));
+      assert.equal(staticFrame.width, expectedSize, `${petId} ${formId} static width`);
+      assert.equal(staticFrame.height, expectedSize, `${petId} ${formId} static height`);
+      assert.equal(aodFrame.width, expectedSize, `${petId} ${formId} aod width`);
+      assert.equal(aodFrame.height, expectedSize, `${petId} ${formId} aod height`);
+      assert.ok(opaqueCount(aodFrame) < opaqueCount(staticFrame) * 0.4, `${petId} ${formId} AOD is too dense`);
 
-    for (const [prefix, frameCount] of Object.entries(actions)) {
-      for (let index = 0; index < frameCount; index += 1) {
-        const frame = await readPng(path.join("pet-packs", petId, "baby", `${prefix}_${index}.png`));
-        assert.equal(frame.width, expectedSize, `${petId} ${prefix}_${index} width`);
-        assert.equal(frame.height, expectedSize, `${petId} ${prefix}_${index} height`);
+      for (const [prefix, frameCount] of Object.entries(actions)) {
+        for (let index = 0; index < frameCount; index += 1) {
+          const frame = await readPng(path.join("pet-packs", petId, formId, `${prefix}_${index}.png`));
+          assert.equal(frame.width, expectedSize, `${petId} ${formId} ${prefix}_${index} width`);
+          assert.equal(frame.height, expectedSize, `${petId} ${formId} ${prefix}_${index} height`);
+        }
       }
     }
   }

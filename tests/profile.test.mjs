@@ -9,7 +9,7 @@ test("toDateKey formats local calendar fields", () => {
 
 test("createDefaultProfile returns a compact valid profile", () => {
   assert.deepEqual(createDefaultProfile("20260602"), {
-    schemaVersion: 1,
+    schemaVersion: 2,
     selectedPetId: "pixel-cat",
     selectedFormId: "baby",
     foodBalance: 0,
@@ -34,7 +34,7 @@ test("normalizeProfile recovers invalid counters and keeps readable activity", (
       dailyActivity: [{ date: "20260601", settledSteps: 3000, earnedFood: 3 }, { broken: true }]
     }, "20260602"),
     {
-      schemaVersion: 1,
+      schemaVersion: 2,
       selectedPetId: "pixel-cat",
       selectedFormId: "baby",
       foodBalance: 0,

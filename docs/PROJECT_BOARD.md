@@ -20,6 +20,7 @@ Date: 2026-06-02
 | ID | Deliverable | Depends On | Status | Exit Evidence |
 | --- | --- | --- | --- | --- |
 | P1-C1 | V1 constants, scoring, collection, evolution, and form-switch core | P1-P draft | done with concerns | `docs/reports/2026-06-05-phase-1-core-worker-report.md`; `npm.cmd test` PASS, 62 tests |
+| P1-C2 | Simulator-safe local product UI, complete-form starter assets, Rare/Secret local unlocks | P1-C1 | done with concerns | `docs/reports/2026-06-06-simulator-safe-product-worker-report.md`; `npm.cmd test` PASS, 72 tests; `zeus.cmd build` PASS |
 
 This does not replace the P0-6 physical-watch gate. It only records deterministic
 JavaScript work that can be validated without QR scan, Zepp App login, or a physical

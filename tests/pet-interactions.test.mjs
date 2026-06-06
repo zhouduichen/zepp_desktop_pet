@@ -71,4 +71,6 @@ test("getInteractionFrame maps actions to existing pet sprite frames", () => {
   assert.equal(getInteractionFrame("pixel-bunny", "pet"), "pets/pixel-bunny/baby/tap_3.png");
   assert.equal(getInteractionFrame("pixel-hamster", "play"), "pets/pixel-hamster/baby/happy_4.png");
   assert.equal(getInteractionFrame("pixel-fox", "noFood"), "pets/pixel-fox/baby/no_food_3.png");
+  assert.equal(getInteractionFrame("pixel-cat", "active", "idle"), "pets/pixel-cat/active/static.png");
+  assert.equal(getInteractionFrame("pixel-cat", "rare", "play"), "pets/pixel-cat/rare/happy_4.png");
 });

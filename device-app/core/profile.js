@@ -1,11 +1,11 @@
-import { DEFAULT_FORM_ID, DEFAULT_PET_ID, HISTORY_DAYS } from "./constants.js";
+import { DEFAULT_FORM_ID, DEFAULT_PET_ID, HISTORY_DAYS, SCHEMA_VERSION_V1 } from "./constants.js";
 import { toNonNegativeInt } from "./helpers.js";
 
 const DATE_KEY = /^\d{8}$/;
 
 export function createDefaultProfile(today) {
   return {
-    schemaVersion: 1,
+    schemaVersion: SCHEMA_VERSION_V1,
     selectedPetId: DEFAULT_PET_ID,
     selectedFormId: DEFAULT_FORM_ID,
     foodBalance: 0,
@@ -31,7 +31,7 @@ export function normalizeProfile(value, today) {
     : [];
 
   return {
-    schemaVersion: 1,
+    schemaVersion: SCHEMA_VERSION_V1,
     selectedPetId: typeof source.selectedPetId === "string" && source.selectedPetId
       ? source.selectedPetId
       : DEFAULT_PET_ID,
@@ -43,6 +43,9 @@ export function normalizeProfile(value, today) {
     experience: toNonNegativeInt(source.experience),
     lastSettlementDate: DATE_KEY.test(source.lastSettlementDate) ? source.lastSettlementDate : today,
     lastSettledSteps: toNonNegativeInt(source.lastSettledSteps),
-    dailyActivity
+    dailyActivity,
+    ...(Array.isArray(source.pendingEvolutionChoices)
+      ? { pendingEvolutionChoices: source.pendingEvolutionChoices.filter((id) => typeof id === "string" && id) }
+      : {})
   };
 }
