@@ -157,6 +157,75 @@ function drawSparkle(grid, x, y, color) {
   rect(grid, x - 2, y, 5, 1, color);
 }
 
+function drawTinyHeart(grid, x, y, colors) {
+  rect(grid, x, y, 2, 2, colors.pink);
+  rect(grid, x + 3, y, 2, 2, colors.pink);
+  rect(grid, x, y + 2, 5, 2, colors.pink);
+  rect(grid, x + 1, y + 4, 3, 2, colors.pink);
+  rect(grid, x + 2, y + 6, 1, 1, colors.pink);
+}
+
+function drawFormBackdrop(grid, pet, pose, colors) {
+  if (pose.formId === "active") {
+    line(grid, 8, 42 + pose.bodyY, 1, 45 + pose.bodyY, 1.4, colors.outline);
+    line(grid, 11, 48 + pose.bodyY, 4, 52 + pose.bodyY, 1.4, colors.outline);
+    line(grid, 10, 42 + pose.bodyY, 3, 45 + pose.bodyY, 0.8, colors.cream);
+    line(grid, 13, 48 + pose.bodyY, 6, 52 + pose.bodyY, 0.8, colors.cream);
+  }
+
+  if (pose.formId === "steady") {
+    ellipse(grid, 32, 58, 22.0, 5.5, colors.outline);
+    ellipse(grid, 32, 56, 18.5, 3.8, colors.cream);
+  }
+
+  if (pose.formId === "explorer") {
+    rect(grid, 6, 35 + pose.bodyY, 11, 17, colors.outline);
+    rect(grid, 8, 37 + pose.bodyY, 7, 13, colors.shadow);
+    line(grid, 55, 21 + pose.bodyY, 55, 39 + pose.bodyY, 1.2, colors.outline);
+    polygon(grid, [[55, 20 + pose.bodyY], [64, 24 + pose.bodyY], [55, 29 + pose.bodyY]], colors.outline);
+    polygon(grid, [[56, 22 + pose.bodyY], [62, 24 + pose.bodyY], [56, 27 + pose.bodyY]], colors.light);
+  }
+
+  if (pose.formId === "rare") {
+    polygon(grid, [[12, 34 + pose.bodyY], [2, 28 + pose.bodyY], [9, 45 + pose.bodyY]], colors.outline);
+    polygon(grid, [[52, 34 + pose.bodyY], [62, 28 + pose.bodyY], [55, 45 + pose.bodyY]], colors.outline);
+    polygon(grid, [[12, 36 + pose.bodyY], [5, 31 + pose.bodyY], [10, 42 + pose.bodyY]], colors.cream);
+    polygon(grid, [[52, 36 + pose.bodyY], [59, 31 + pose.bodyY], [54, 42 + pose.bodyY]], colors.cream);
+  }
+
+  if (pose.formId === "secret") {
+    ringEllipse(grid, 12, 21 + pose.bodyY, 6.0, 9.0, colors.outline, colors.clear);
+    ellipse(grid, 15, 19 + pose.bodyY, 4.5, 7.5, colors.clear);
+    polygon(grid, [[46, 48 + pose.bodyY], [63, 39 + pose.bodyY], [57, 56 + pose.bodyY]], colors.outline);
+    polygon(grid, [[48, 48 + pose.bodyY], [60, 42 + pose.bodyY], [56, 53 + pose.bodyY]], colors.shadow);
+  }
+}
+
+function drawFormOverlay(grid, pet, pose, colors) {
+  if (pose.formId === "baby") {
+    drawTinyHeart(grid, 9, 24, colors);
+  } else if (pose.formId === "teen") {
+    rect(grid, 12, 43 + pose.bodyY, 5, 4, colors.outline);
+    rect(grid, 47, 43 + pose.bodyY, 5, 4, colors.outline);
+    rect(grid, 13, 43 + pose.bodyY, 3, 3, colors.cream);
+    rect(grid, 48, 43 + pose.bodyY, 3, 3, colors.cream);
+  } else if (pose.formId === "active") {
+    drawSparkle(grid, 8, 28 + pose.bodyY, colors.cream);
+  } else if (pose.formId === "steady") {
+    rect(grid, 20, 20 + pose.headY, 24, 3, colors.cream);
+  } else if (pose.formId === "explorer") {
+    rect(grid, 23 + pose.headX, 9 + pose.headY, 18, 4, colors.outline);
+    rect(grid, 25 + pose.headX, 8 + pose.headY, 14, 3, colors.shadow);
+  } else if (pose.formId === "rare") {
+    drawSparkle(grid, 32 + pose.headX, 5 + pose.headY, colors.cream);
+    drawSparkle(grid, 7, 18 + pose.bodyY, colors.white);
+    drawSparkle(grid, 57, 18 + pose.bodyY, colors.white);
+  } else if (pose.formId === "secret") {
+    rect(grid, 25 + pose.headX, 18 + pose.headY, 4, 2, colors.cream);
+    rect(grid, 38 + pose.headX, 18 + pose.headY, 4, 2, colors.cream);
+  }
+}
+
 function drawEars(grid, pet, hx, hy, colors) {
   if (pet.kind === "bunny") {
     for (const side of [-1, 1]) {
@@ -231,20 +300,18 @@ function drawTail(grid, pet, bodyY, tailLift, colors) {
 
 function drawEyes(grid, pose, hx, hy, colors) {
   if (pose.eyes === "closed") {
-    rect(grid, 20 + hx, 27 + hy, 10, 2, colors.outline);
-    rect(grid, 35 + hx, 27 + hy, 10, 2, colors.outline);
+    rect(grid, 21 + hx, 28 + hy, 8, 2, colors.outline);
+    rect(grid, 36 + hx, 28 + hy, 8, 2, colors.outline);
     return;
   }
 
-  const height = pose.eyes === "half" ? 4 : 10;
-  rect(grid, 19 + hx, 22 + hy, 11, height, colors.outline);
-  rect(grid, 35 + hx, 22 + hy, 11, height, colors.outline);
-  rect(grid, 21 + hx, 24 + hy, 6, Math.max(2, height - 4), colors.eye);
-  rect(grid, 37 + hx, 24 + hy, 6, Math.max(2, height - 4), colors.eye);
-  rect(grid, 21 + hx, 22 + hy, 4, 4, colors.white);
-  rect(grid, 37 + hx, 22 + hy, 4, 4, colors.white);
-  setPixel(grid, 27 + hx, 30 + hy, colors.outline);
-  setPixel(grid, 43 + hx, 30 + hy, colors.outline);
+  const height = pose.eyes === "half" ? 5 : 9;
+  ellipse(grid, 24 + hx, 27 + hy, 4.2, height / 2, colors.outline);
+  ellipse(grid, 40 + hx, 27 + hy, 4.2, height / 2, colors.outline);
+  rect(grid, 22 + hx, 23 + hy, 3, 3, colors.white);
+  rect(grid, 38 + hx, 23 + hy, 3, 3, colors.white);
+  setPixel(grid, 27 + hx, 29 + hy, colors.eye);
+  setPixel(grid, 43 + hx, 29 + hy, colors.eye);
 }
 
 function drawFace(grid, pet, pose, hx, hy, colors) {
@@ -287,17 +354,19 @@ function drawPet(pet, pose = {}) {
   const tailLift = pose.tailLift ?? 0;
 
   drawTail(grid, pet, bodyY, tailLift, colors);
+  drawFormBackdrop(grid, pet, { ...pose, bodyY, headX: hx, headY: hy }, colors);
 
-  const bodyRx = pet.kind === "hamster" ? 16.0 : 14.5;
-  const bodyRy = pet.kind === "bunny" ? 14.7 : 13.2;
+  const bodyRx = (pet.kind === "hamster" ? 16.0 : 14.5) + (pose.bodyRxDelta ?? 0);
+  const bodyRy = (pet.kind === "bunny" ? 14.7 : 13.2) + (pose.bodyRyDelta ?? 0);
   ellipse(grid, 32, 48 + bodyY, bodyRx, bodyRy, colors.outline);
   ellipse(grid, 32, 47 + bodyY, bodyRx - 2.4, bodyRy - 2.0, colors.base);
   ellipse(grid, 32, 51 + bodyY, 7.5, 7.6, colors.cream);
 
-  ellipse(grid, 20, 58 + bodyY, 5.4, 3.4, colors.outline);
-  ellipse(grid, 44, 58 + bodyY, 5.4, 3.4, colors.outline);
-  ellipse(grid, 20, 56 + bodyY, 3.3, 2.1, colors.cream);
-  ellipse(grid, 44, 56 + bodyY, 3.3, 2.1, colors.cream);
+  const footSpread = pose.footSpread ?? 0;
+  ellipse(grid, 20 - footSpread, 58 + bodyY, 5.4, 3.4, colors.outline);
+  ellipse(grid, 44 + footSpread, 58 + bodyY, 5.4, 3.4, colors.outline);
+  ellipse(grid, 20 - footSpread, 56 + bodyY, 3.3, 2.1, colors.cream);
+  ellipse(grid, 44 + footSpread, 56 + bodyY, 3.3, 2.1, colors.cream);
 
   const pawLift = pose.pawLift ?? 0;
   ellipse(grid, 18, 46 + bodyY - pawLift, 4.4, 6.5, colors.outline);
@@ -306,8 +375,8 @@ function drawPet(pet, pose = {}) {
   ellipse(grid, 46, 46 + bodyY - pawLift, 2.5, 4.2, colors.light);
 
   drawEars(grid, pet, hx, hy, colors);
-  const headRx = pet.kind === "hamster" ? 18.5 : 18.0;
-  const headRy = pet.kind === "bunny" ? 15.2 : 16.3;
+  const headRx = (pet.kind === "hamster" ? 18.5 : 18.0) + (pose.headRxDelta ?? 0);
+  const headRy = (pet.kind === "bunny" ? 15.2 : 16.3) + (pose.headRyDelta ?? 0);
   ellipse(grid, 32 + hx, 27 + hy, headRx, headRy, colors.outline);
   ellipse(grid, 32 + hx, 27 + hy, headRx - 2.4, headRy - 2.2, colors.light);
 
@@ -341,6 +410,8 @@ function drawPet(pet, pose = {}) {
     drawSparkle(grid, 11, 21, colors.white);
     drawSparkle(grid, 52, 22, colors.white);
   }
+
+  drawFormOverlay(grid, pet, { ...pose, bodyY, headX: hx, headY: hy }, colors);
 
   return grid;
 }
@@ -466,17 +537,86 @@ function manifestFor(pet) {
 }
 
 const formBasePoses = {
-  baby: {},
-  teen: { bodyY: -1, headY: -1 },
-  active: { bodyY: -3, headY: -2, pawLift: 4, tailLift: 5, mouth: "happy", sparkle: true },
-  steady: { eyes: "half", bodyY: 1, blush: false },
-  explorer: { headX: 3, headY: -1, tailLift: 4, sparkle: true },
-  rare: { bodyY: -2, pawLift: 5, tailLift: 5, mouth: "happy", sparkle: true },
-  secret: { eyes: "half", headY: -3, headX: -2, sparkle: true }
+  baby: {
+    bodyY: 2,
+    bodyRxDelta: -2.2,
+    bodyRyDelta: -0.8,
+    headY: 1,
+    headRxDelta: -1.6,
+    headRyDelta: -1.2,
+    footSpread: -1
+  },
+  teen: {
+    bodyY: -2,
+    bodyRxDelta: 0.6,
+    bodyRyDelta: 2.5,
+    headY: -3,
+    headRyDelta: 1.6,
+    footSpread: 1
+  },
+  active: {
+    bodyY: -6,
+    bodyRxDelta: -0.8,
+    bodyRyDelta: 0.8,
+    headY: -5,
+    headX: 2,
+    pawLift: 7,
+    tailLift: 9,
+    footSpread: 3,
+    mouth: "happy",
+    sparkle: true
+  },
+  steady: {
+    eyes: "half",
+    bodyY: 3,
+    bodyRxDelta: 4.8,
+    bodyRyDelta: 2.2,
+    headY: 2,
+    headRxDelta: 1.5,
+    footSpread: 4,
+    blush: false
+  },
+  explorer: {
+    bodyY: -1,
+    bodyRxDelta: 0.8,
+    bodyRyDelta: 1.2,
+    headX: 4,
+    headY: -2,
+    headRxDelta: 0.8,
+    tailLift: 7,
+    footSpread: 2,
+    sparkle: true
+  },
+  rare: {
+    bodyY: -3,
+    bodyRxDelta: 1.8,
+    bodyRyDelta: 1.2,
+    headY: -3,
+    headRyDelta: 0.8,
+    pawLift: 6,
+    tailLift: 6,
+    footSpread: 2,
+    mouth: "happy",
+    sparkle: true
+  },
+  secret: {
+    eyes: "half",
+    bodyY: -2,
+    bodyRxDelta: 1.0,
+    bodyRyDelta: 2.8,
+    headY: -6,
+    headX: -3,
+    headRxDelta: -0.8,
+    headRyDelta: 2.2,
+    tailLift: 3,
+    footSpread: 0,
+    sparkle: true
+  }
 };
 
 function poseFor(formId, pose) {
   return {
+    formId,
     ...formBasePoses[formId],
     ...pose
   };

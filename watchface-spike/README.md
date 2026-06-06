@@ -34,6 +34,23 @@ All other fields matched the official API documentation at commit time.
 - No background timers or infinite animation loops.
 - No runtime asset downloading.
 - No direct cross-runtime state sharing (see fallback below).
+- No Mini Program management controls on the watch face. Feed, play, evolution, form
+  switching, and pet switching remain in the companion Mini Program.
+
+## Current Product Boundary
+
+The watch face is now a normal information face first:
+
+- time;
+- date;
+- today's steps;
+- goal progress;
+- food derived from steps;
+- one visible pet companion.
+
+The only watch-face pet interaction is tapping the pet area to play the finite `tap_`
+pat animation. The companion Mini Program owns lower-frequency management interactions
+such as Feed, Play, Evolution, Form, and Next Pet.
 
 ## Fallback
 
@@ -48,31 +65,33 @@ Program.
 
 ## Build Results
 
-**Last updated:** 2026-06-04
+**Last updated:** 2026-06-06
 
 | Stage | Result | Detail |
 | --- | --- | --- |
 | app.json schema validation | PASS | `permissions` field required by validator; added empty array. Observer pattern: schema after `permissions: []` no longer rejected the manifest. |
 | app.js requirement | PASS | Build requires `app.js` in watchface project root (even for watchface type). Added lifecycle shell. |
-| Rollup JS transform | PASS | Both `app.js` and `index.js` transformed without syntax or API errors. The `hmUI`, `hmSensor`, `hmSetting` globals and `CLICK_DOWN` event used in `index.js` validated by the bundler. |
-| zpm package (dist/) | PASS | `NODE_OPTIONS=--require D:\huami\desktop_pet\patch-zpm.cjs` with `zeus.cmd build` on Node v24.15.0 produced `watchface-spike/dist/1099992-Pet_Universe_Face_Spike-0.0.1-20260604213031.zab` (951,569 bytes). |
-| staged pet assets | PASS | The single `gt` target declares round (`r`) and square (`s`) platforms; generated mirrors live under `assets/gt.r/` and `assets/gt.s/`. Every built `device.zip` inspected inside the latest `.zab` contains `assets/pixel-cat/manifest.json` and 48 `assets/pixel-cat/baby/*.png` frames. |
-| resize warning | DONE_WITH_CONCERNS | Build still logs `RESIZE Error: Input file contains unsupported image format` once per generated target before converting pet assets. The package contains the pet assets, but the warning should be checked before store submission. |
+| Rollup JS transform | PASS | Both `app.js` and `index.js` transformed without syntax or API errors. The `hmUI`, `hmSensor`, `hmSetting`, `TIME`, `STEP`, `IMG_ANIM`, and `CLICK_DOWN` usage compiled. |
+| zpm package (dist/) | PASS | `NODE_OPTIONS=--require D:\huami\desktop_pet\patch-zpm.cjs` with `zeus.cmd build` on Node v24 produced `watchface-spike/dist/1099992-Pet_Universe_Face_Spike-0.0.1-20260606141558.zab` (504,576 bytes). |
+| staged pet assets | PASS | The single `gt` target declares round (`r`) and square (`s`) platforms; generated mirrors live under `assets/gt.r/` and `assets/gt.s/`. The watch-face mirror now contains only `pixel-cat/baby` static, AOD, wake, and tap assets. |
+| resize warning | DONE_WITH_CONCERNS | Build still logs `RESIZE Error: Input file contains unsupported image format` before converting pet assets. The package is produced, but the warning should be checked before store submission. |
 
-**Conclusion:** Rollup compiled the watch-face JS successfully and Zeus produced a
-`.zab` package with the pet assets included. The tap listener with `CLICK_DOWN` was
-**not rejected by the build**. Physical-device testing is still required to confirm
-whether `addEventListener(CLICK_DOWN, ...)`, `IMG_ANIM`, STEP, and AOD work at runtime.
+**Conclusion:** Rollup compiled the normal watch-face JS successfully and Zeus produced
+a `.zab` package with lightweight pet assets included. The tap listener with
+`CLICK_DOWN` was **not rejected by the build**. Physical-device testing is still
+required to confirm whether `addEventListener(CLICK_DOWN, ...)`, `IMG_ANIM`, STEP,
+TIME, and AOD work at runtime.
 
 ## Verified Capability Matrix
 
-(Last updated: 2026-06-04 after `zeus.cmd build` from `watchface-spike/`.)
+(Last updated: 2026-06-06 after `zeus.cmd build` from `watchface-spike/`.)
 
 | Capability | Result | Evidence |
 | --- | --- | --- |
 | STEP readout | supported (syntax verified) | `hmSensor.createSensor(hmSensor.id.STEP)` compiled by Rollup. |
+| TIME readout | supported (syntax verified) | `hmSensor.createSensor(hmSensor.id.TIME)` compiled by Rollup. Physical device test needed for live refresh behavior. |
 | Finite wake animation | supported (syntax verified) | IMG_ANIM widget with `repeat_count: 1`, `display_on_restart`, `default_frame_index` compiled by Rollup. |
-| Pet tap reaction | supported by build (not rejected) | `addEventListener(hmUI.event.CLICK_DOWN, ...)` compiled by Rollup without errors. Physical device test needed for runtime confirmation. |
+| Pet pat reaction | supported by build (not rejected) | `addEventListener(hmUI.event.CLICK_DOWN, ...)` starts the finite `tap_` animation and compiled without errors. Physical device test needed for runtime confirmation. |
 | Static AOD frame | supported (syntax verified) | `hmSetting.getScreenType()` check with IMG widget compiled by Rollup. |
 | State persistence | not verified | Watchface persistence APIs not documented. |
 | Mini Program state sharing | not supported | No documented shared storage API between watchface and Mini Program runtimes. |

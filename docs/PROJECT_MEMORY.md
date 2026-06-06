@@ -33,7 +33,7 @@ physical-watch gate.
 - Active branch at the time this memory was written:
   `codex/pet-universe-retry-verification`
 - Latest implementation commit before this memory document:
-  `e342429 feat: add device app pet interactions`
+  `a7cf630 feat: complete simulator-safe pet product`
 - Main product name: Zepp Pet Universe
 - Runtime split:
   - `device-app/`: Zepp OS Device Mini Program
@@ -86,6 +86,23 @@ Completed or locally working:
   `pet-packs/` and watch-face mirrors keep complete animation sequences.
 - Watch-face spike builds locally and packages pet assets, but physical runtime behavior
   is still not verified.
+- Starter pet sprites were redesigned on 2026-06-06 to use cuter black highlight eyes,
+  clearer blush, and stronger form silhouettes.
+- Evolution forms now have different silhouette language:
+  - Baby: small and round.
+  - Teen: taller.
+  - Active: lifted and energetic.
+  - Steady: lower, wider, and grounded.
+  - Explorer: wider exploration silhouette.
+  - Rare: wing/star silhouette.
+  - Secret: moon/shadow silhouette.
+- `docs/reports/starter-form-preview.png` shows the five starter pets across Baby,
+  Teen, Active, Steady, Explorer, Rare, and Secret.
+- `watchface-spike/` is now a normal watch face surface: time, date, steps, goal
+  progress, food derived from steps, and pet pat only.
+- Watch-face assets are intentionally lightweight. `stage:watchface` stages only the
+  current watch-face pet/form (`pixel-cat/baby` by default) and only static, AOD,
+  wake, and tap frames. The full roster and management actions stay in `device-app/`.
 
 Not implemented yet:
 
@@ -107,6 +124,15 @@ Current expected Device Mini Program screen:
 - Food text
 - `AFF` and `EXP`
 - Six tap controls: `FEED`, `PET`, `PLAY`, `EVO`, `FORM`, `NEXT`
+
+Current expected watch-face screen:
+
+- Normal watch face first: time, date, steps, goal progress, and food-from-steps.
+- Pet appears as an added companion layer.
+- The only watch-face pet interaction is tapping the pet to play the finite `tap_`
+  pat animation.
+- Watch face must not show `NEXT PET`, `FEED`, `PLAY`, `EVO`, or `FORM`; those belong
+  to the Device Mini Program.
 
 Known behavior:
 
@@ -217,6 +243,24 @@ Latest simulator-safe local product verification from 2026-06-06:
   `device-app/dist/1099991-Pet_Universe_Spike-0.0.1-20260606125410.zab`,
   5,855,865 bytes.
 
+Latest pet redesign and watch-face boundary verification from 2026-06-06:
+
+- `npm.cmd test`: PASS, 74 tests.
+- `npm.cmd run validate:pack`: PASS.
+- `npm.cmd run validate:roster`: PASS, 5 packs.
+- `npm.cmd run stage:device`: PASS.
+- `npm.cmd run stage:watchface`: PASS, lightweight `pixel-cat/baby` only.
+- `npm.cmd run measure:assets`: PASS, 1,685 files, 1,582,281 bytes under
+  `pet-packs`.
+- `zeus.cmd build` from `device-app/`: PASS.
+- Latest Device Mini Program package:
+  `device-app/dist/1099991-Pet_Universe_Spike-0.0.1-20260606141807.zab`,
+  6,358,254 bytes.
+- `zeus.cmd build` from `watchface-spike/` with the local `NODE_OPTIONS` patch: PASS.
+- Latest watch-face package:
+  `watchface-spike/dist/1099992-Pet_Universe_Face_Spike-0.0.1-20260606141558.zab`,
+  504,576 bytes.
+
 ## What To Test Right Now
 
 Only simulator-friendly Phase 0 behavior should be tested right now:
@@ -234,6 +278,10 @@ Only simulator-friendly Phase 0 behavior should be tested right now:
 - If simulator steps are `1000+`, `FEED` consumes food and adds EXP/AFF.
 - Reopening the app does not duplicate food for the same step total.
 - Round and square layouts do not overlap text, controls, or sprite.
+- Watch-face build includes a normal time/date/steps/goal/food surface and no
+  management controls.
+- Watch-face assets remain lightweight and do not include full roster management
+  actions.
 
 Do not treat these as complete product tests:
 
@@ -270,6 +318,8 @@ Do not treat these as complete product tests:
 - `device-app/core/pets.js`: starter roster and pet switching.
 - `scripts/stage-device-assets.mjs`: mirrors canonical pet packs into device app assets.
 - `scripts/stage-watchface-assets.mjs`: mirrors canonical pet packs into watch-face assets.
+- `scripts/render-form-preview.mjs`: renders the form-preview contact sheet for visual
+  review.
 - `pet-packs/*`: canonical starter pet packs.
 
 ## Architecture Rules To Preserve
@@ -296,6 +346,8 @@ Do not treat these as complete product tests:
 - Device app debug package now includes all five starter pet packs and is therefore
   larger than the earlier minimal build.
 - Starter sprites are good enough for testing but not final commercial launch art.
+- Starter sprites are improved from placeholders, but still need human visual review
+  before commercial launch.
 - Watch-face builds have previously shown a Zepp resize warning while still producing
   packages; investigate before store submission.
 

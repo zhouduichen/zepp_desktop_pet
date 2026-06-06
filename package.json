@@ -9,6 +9,7 @@
     "generate:roster": "node scripts/generate-starter-roster-assets.mjs",
     "preview:assets": "node scripts/render-sprite-preview.mjs",
     "preview:roster": "node scripts/render-roster-preview.mjs",
+    "preview:forms": "node scripts/render-form-preview.mjs",
     "validate:pack": "node scripts/validate-pet-pack.mjs pet-packs/pixel-cat/manifest.json",
     "validate:roster": "node scripts/validate-roster-packs.mjs pet-packs",
     "stage:watchface": "node scripts/stage-watchface-assets.mjs pet-packs watchface-spike/assets",
