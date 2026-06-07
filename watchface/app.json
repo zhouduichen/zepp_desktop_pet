@@ -1,0 +1,34 @@
+{
+  "configVersion": "v3",
+  "app": {
+    "appId": 1099992,
+    "appName": "Pet Universe Face",
+    "appType": "watchface",
+    "version": { "code": 1, "name": "1.0.0" },
+    "vender": "zepp",
+    "description": "Pet Universe virtual pet watch face — time, steps, and a pixel companion"
+  },
+  "permissions": [],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "3.0.0",
+      "target": "3.0.0",
+      "minVersion": "3.0"
+    }
+  },
+  "targets": {
+    "gt": {
+      "module": {
+        "watchface": { "path": "index", "main": 1, "lockscreen": 1 }
+      },
+      "platforms": [
+        { "st": "r", "dw": 480 },
+        { "st": "s", "dw": 390 }
+      ]
+    }
+  },
+  "i18n": {
+    "en-US": { "appName": "Pet Universe" }
+  },
+  "defaultLanguage": "en-US"
+}

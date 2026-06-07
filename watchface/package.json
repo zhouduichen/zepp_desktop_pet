@@ -1,0 +1,13 @@
+{
+  "name": "pet-universe-face",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pet Universe watch face",
+  "scripts": {
+    "build": "zeus build",
+    "preview": "zeus preview"
+  },
+  "devDependencies": {
+    "@zeppos/device-types": "^3.0.0"
+  }
+}
