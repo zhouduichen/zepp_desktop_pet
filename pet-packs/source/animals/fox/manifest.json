@@ -1,0 +1,543 @@
+{
+  "slug": "fox",
+  "name": {
+    "en": "Fox",
+    "zh": "狐狸"
+  },
+  "sourceDirs": [
+    "素材/04_fox_狐狸",
+    "素材/fox_8forms_6states_cropped"
+  ],
+  "forms": {
+    "baby": {
+      "key": "baby",
+      "formId": "01_baby",
+      "sourceName": "01_baby",
+      "singleFormSource": "素材/04_fox_狐狸/01_baby.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/01_baby/01_static.png",
+          "output": "素材整理/animals/fox/forms/01_baby/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/01_baby/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/01_baby/02_wake.png",
+          "output": "素材整理/animals/fox/forms/01_baby/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/01_baby/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/01_baby/03_tap.png",
+          "output": "素材整理/animals/fox/forms/01_baby/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/01_baby/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/01_baby/04_feed.png",
+          "output": "素材整理/animals/fox/forms/01_baby/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/01_baby/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/01_baby/05_happy.png",
+          "output": "素材整理/animals/fox/forms/01_baby/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/01_baby/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/01_baby/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/01_baby/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/01_baby/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/01_baby/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/01_baby/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/01_baby/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/01_baby/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/01_baby/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/01_baby/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/01_baby/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    },
+    "teen": {
+      "key": "teen",
+      "formId": "02_teen",
+      "sourceName": "02_teen",
+      "singleFormSource": "素材/04_fox_狐狸/02_teen.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/02_teen/01_static.png",
+          "output": "素材整理/animals/fox/forms/02_teen/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/02_teen/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/02_teen/02_wake.png",
+          "output": "素材整理/animals/fox/forms/02_teen/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/02_teen/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/02_teen/03_tap.png",
+          "output": "素材整理/animals/fox/forms/02_teen/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/02_teen/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/02_teen/04_feed.png",
+          "output": "素材整理/animals/fox/forms/02_teen/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/02_teen/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/02_teen/05_happy.png",
+          "output": "素材整理/animals/fox/forms/02_teen/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/02_teen/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/02_teen/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/02_teen/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/02_teen/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/02_teen/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/02_teen/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/02_teen/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/02_teen/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/02_teen/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/02_teen/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/02_teen/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    },
+    "base": {
+      "key": "base",
+      "formId": "03_base",
+      "sourceName": "03_base",
+      "singleFormSource": "素材/04_fox_狐狸/03_base.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/03_base/01_static.png",
+          "output": "素材整理/animals/fox/forms/03_base/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/03_base/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/03_base/02_wake.png",
+          "output": "素材整理/animals/fox/forms/03_base/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/03_base/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/03_base/03_tap.png",
+          "output": "素材整理/animals/fox/forms/03_base/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/03_base/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/03_base/04_feed.png",
+          "output": "素材整理/animals/fox/forms/03_base/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/03_base/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/03_base/05_happy.png",
+          "output": "素材整理/animals/fox/forms/03_base/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/03_base/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/03_base/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/03_base/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/03_base/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/03_base/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/03_base/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/03_base/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/03_base/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/03_base/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/03_base/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/03_base/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    },
+    "active": {
+      "key": "active",
+      "formId": "04_active",
+      "sourceName": "04_active",
+      "singleFormSource": "素材/04_fox_狐狸/04_active.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/04_active/01_static.png",
+          "output": "素材整理/animals/fox/forms/04_active/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/04_active/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/04_active/02_wake.png",
+          "output": "素材整理/animals/fox/forms/04_active/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/04_active/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/04_active/03_tap.png",
+          "output": "素材整理/animals/fox/forms/04_active/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/04_active/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/04_active/04_feed.png",
+          "output": "素材整理/animals/fox/forms/04_active/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/04_active/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/04_active/05_happy.png",
+          "output": "素材整理/animals/fox/forms/04_active/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/04_active/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/04_active/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/04_active/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/04_active/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/04_active/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/04_active/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/04_active/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/04_active/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/04_active/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/04_active/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/04_active/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    },
+    "steady": {
+      "key": "steady",
+      "formId": "05_steady",
+      "sourceName": "05_steady",
+      "singleFormSource": "素材/04_fox_狐狸/05_steady.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/05_steady/01_static.png",
+          "output": "素材整理/animals/fox/forms/05_steady/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/05_steady/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/05_steady/02_wake.png",
+          "output": "素材整理/animals/fox/forms/05_steady/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/05_steady/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/05_steady/03_tap.png",
+          "output": "素材整理/animals/fox/forms/05_steady/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/05_steady/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/05_steady/04_feed.png",
+          "output": "素材整理/animals/fox/forms/05_steady/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/05_steady/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/05_steady/05_happy.png",
+          "output": "素材整理/animals/fox/forms/05_steady/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/05_steady/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/05_steady/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/05_steady/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/05_steady/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/05_steady/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/05_steady/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/05_steady/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/05_steady/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/05_steady/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/05_steady/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/05_steady/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    },
+    "explorer": {
+      "key": "explorer",
+      "formId": "06_explorer",
+      "sourceName": "06_explorer",
+      "singleFormSource": "素材/04_fox_狐狸/06_explorer.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/06_explorer/01_static.png",
+          "output": "素材整理/animals/fox/forms/06_explorer/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/06_explorer/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/06_explorer/02_wake.png",
+          "output": "素材整理/animals/fox/forms/06_explorer/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/06_explorer/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/06_explorer/03_tap.png",
+          "output": "素材整理/animals/fox/forms/06_explorer/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/06_explorer/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/06_explorer/04_feed.png",
+          "output": "素材整理/animals/fox/forms/06_explorer/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/06_explorer/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/06_explorer/05_happy.png",
+          "output": "素材整理/animals/fox/forms/06_explorer/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/06_explorer/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/06_explorer/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/06_explorer/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/06_explorer/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/06_explorer/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/06_explorer/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/06_explorer/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/06_explorer/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/06_explorer/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/06_explorer/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/06_explorer/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    },
+    "rare": {
+      "key": "rare",
+      "formId": "07_rare",
+      "sourceName": "07_rare",
+      "singleFormSource": "素材/04_fox_狐狸/07_rare.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/07_rare/01_static.png",
+          "output": "素材整理/animals/fox/forms/07_rare/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/07_rare/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/07_rare/02_wake.png",
+          "output": "素材整理/animals/fox/forms/07_rare/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/07_rare/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/07_rare/03_tap.png",
+          "output": "素材整理/animals/fox/forms/07_rare/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/07_rare/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/07_rare/04_feed.png",
+          "output": "素材整理/animals/fox/forms/07_rare/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/07_rare/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/07_rare/05_happy.png",
+          "output": "素材整理/animals/fox/forms/07_rare/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/07_rare/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/07_rare/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/07_rare/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/07_rare/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/07_rare/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/07_rare/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/07_rare/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/07_rare/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/07_rare/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/07_rare/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/07_rare/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    },
+    "secret": {
+      "key": "secret",
+      "formId": "08_secret",
+      "sourceName": "08_secret",
+      "singleFormSource": "素材/04_fox_狐狸/08_secret.png",
+      "states": {
+        "static": {
+          "stateId": "01_static",
+          "source": "素材/fox_8forms_6states_cropped/08_secret/01_static.png",
+          "output": "素材整理/animals/fox/forms/08_secret/states/01_static.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/08_secret/animations/01_static.gif"
+        },
+        "wake": {
+          "stateId": "02_wake",
+          "source": "素材/fox_8forms_6states_cropped/08_secret/02_wake.png",
+          "output": "素材整理/animals/fox/forms/08_secret/states/02_wake.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/08_secret/animations/02_wake.gif"
+        },
+        "tap": {
+          "stateId": "03_tap",
+          "source": "素材/fox_8forms_6states_cropped/08_secret/03_tap.png",
+          "output": "素材整理/animals/fox/forms/08_secret/states/03_tap.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/08_secret/animations/03_tap.gif"
+        },
+        "feed": {
+          "stateId": "04_feed",
+          "source": "素材/fox_8forms_6states_cropped/08_secret/04_feed.png",
+          "output": "素材整理/animals/fox/forms/08_secret/states/04_feed.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/08_secret/animations/04_feed.gif"
+        },
+        "happy": {
+          "stateId": "05_happy",
+          "source": "素材/fox_8forms_6states_cropped/08_secret/05_happy.png",
+          "output": "素材整理/animals/fox/forms/08_secret/states/05_happy.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/08_secret/animations/05_happy.gif"
+        },
+        "no_food": {
+          "stateId": "06_no_food",
+          "source": "素材/fox_8forms_6states_cropped/08_secret/06_no_food.png",
+          "output": "素材整理/animals/fox/forms/08_secret/states/06_no_food.png",
+          "sourceKind": "state_crop",
+          "filledFrom": null,
+          "animation": "素材整理/animals/fox/forms/08_secret/animations/06_no_food.gif"
+        }
+      },
+      "animations": {
+        "static": "素材整理/animals/fox/forms/08_secret/animations/01_static.gif",
+        "wake": "素材整理/animals/fox/forms/08_secret/animations/02_wake.gif",
+        "tap": "素材整理/animals/fox/forms/08_secret/animations/03_tap.gif",
+        "feed": "素材整理/animals/fox/forms/08_secret/animations/04_feed.gif",
+        "happy": "素材整理/animals/fox/forms/08_secret/animations/05_happy.gif",
+        "no_food": "素材整理/animals/fox/forms/08_secret/animations/06_no_food.gif",
+        "form_state_cycle": "素材整理/animals/fox/forms/08_secret/animations/form_state_cycle.gif"
+      },
+      "extras": []
+    }
+  },
+  "extras": [],
+  "overview": "素材整理/animals/fox/overview.png"
+}
