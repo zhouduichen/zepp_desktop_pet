@@ -1,0 +1,20 @@
+import { px } from "@zos/utils";
+import { align } from "@zos/ui";
+
+export const TITLE = { x: px(70), y: px(42), w: px(340), h: px(34), color: 0xffffff, text_size: px(27), align_h: align.CENTER_H };
+export const BACK = { x: px(20), y: px(42), w: px(70), h: px(34), color: 0xada79c, text_size: px(18) };
+export const GRID_X = px(30);
+export const GRID_Y = px(90);
+export const CARD_W = px(130);
+export const CARD_H = px(150);
+export const CARD_GAP = px(18);
+export const IMG_W = px(64);
+export const IMG_H = px(64);
+export const LABEL_Y = px(20);
+export const COUNT_Y = px(100);
+export const IMG_Y = px(50);
+export const TEXT_COLOR = 0xffffff;
+export const COUNT_COLOR = 0x91d1b2;
+export const BG_COLOR = 0x1c2528;
+export const TEXT_SIZE_NAME = 16;
+export const TEXT_SIZE_COUNT = 14;

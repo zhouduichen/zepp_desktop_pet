@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "pets": [
+    {
+      "id": "pixel-cat",
+      "name": "Pixel Cat",
+      "species": "cat",
+      "category": "familiar",
+      "themeColor": "#FF9F50",
+      "defaultForm": "baby",
+      "description": "A friendly orange feline companion.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    },
+    {
+      "id": "pixel-dragon",
+      "name": "Pixel Dragon",
+      "species": "dragon",
+      "category": "fantasy",
+      "themeColor": "#7B2D8E",
+      "defaultForm": "baby",
+      "description": "A tiny dragon with big dreams.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    },
+    {
+      "id": "pixel-fox",
+      "name": "Pixel Fox",
+      "species": "fox",
+      "category": "familiar",
+      "themeColor": "#E8742A",
+      "defaultForm": "baby",
+      "description": "A clever and spirited fox.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    },
+    {
+      "id": "pixel-hamster",
+      "name": "Pixel Hamster",
+      "species": "hamster",
+      "category": "familiar",
+      "themeColor": "#D4A574",
+      "defaultForm": "baby",
+      "description": "A tiny ball of energy.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    },
+    {
+      "id": "pixel-owl",
+      "name": "Pixel Owl",
+      "species": "owl",
+      "category": "familiar",
+      "themeColor": "#8B6F47",
+      "defaultForm": "baby",
+      "description": "A wise and watchful owl.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    },
+    {
+      "id": "pixel-penguin",
+      "name": "Pixel Penguin",
+      "species": "penguin",
+      "category": "familiar",
+      "themeColor": "#4A7FB5",
+      "defaultForm": "baby",
+      "description": "A waddling polar friend.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    },
+    {
+      "id": "pixel-rabbit",
+      "name": "Pixel Rabbit",
+      "species": "rabbit",
+      "category": "familiar",
+      "themeColor": "#F0C0D0",
+      "defaultForm": "baby",
+      "description": "A soft and curious bunny.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    },
+    {
+      "id": "pixel-shiba",
+      "name": "Pixel Shiba",
+      "species": "dog",
+      "category": "familiar",
+      "themeColor": "#E8A040",
+      "defaultForm": "baby",
+      "description": "A loyal and expressive shiba.",
+      "minApiLevel": "3.0",
+      "screenShapes": ["r", "s"]
+    }
+  ]
+}

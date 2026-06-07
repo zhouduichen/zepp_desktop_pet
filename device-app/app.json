@@ -30,7 +30,11 @@
       "module": {
         "page": {
           "pages": [
-            "page/home/home"
+            "page/home/home",
+            "page/collection/collection",
+            "page/detail/detail",
+            "page/history/history",
+            "page/form-switch/form-switch"
           ]
         }
       },

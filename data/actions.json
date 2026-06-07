@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "requiredActions": ["wakeIdle", "speciesIdle", "tapReact", "feed", "happy", "noFood", "goalCelebrate", "sleepAod", "evolutionHint"],
+  "optionalActions": ["pet", "play", "walkReturn", "dressUp", "secretHint"]
+}

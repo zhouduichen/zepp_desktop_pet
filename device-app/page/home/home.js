@@ -1,5 +1,6 @@
 import { createWidget, event, prop, widget } from "@zos/ui";
 import { Step } from "@zos/sensor";
+import { push } from "@zos/router";
 import * as Common from "zosLoader:./../common.[pf].layout.js";
 import * as Styles from "zosLoader:./home.[pf].layout.js";
 import {
@@ -16,6 +17,7 @@ import { getPetById } from "../../core/pets.js";
 import { toDateKey } from "../../core/date-key.js";
 import { settleSteps } from "../../core/settlement.js";
 import { loadCollections, loadProfile, saveCollections, saveProfile } from "../../utils/storage.js";
+import { t } from "../../utils/i18n.js";
 
 const step = new Step();
 const TAP_EVENT = event.CLICK_DOWN;
@@ -47,7 +49,7 @@ Page({
     saveCollections(collections);
 
     createWidget(widget.FILL_RECT, { ...Common.SCREEN, color: 0x101111 });
-    createWidget(widget.TEXT, { ...Styles.TITLE, text: "PET UNIVERSE" });
+    createWidget(widget.TEXT, { ...Styles.TITLE, text: t("home_title") });
     const pet = getPetById(profile.selectedPetId);
     const petLabel = createWidget(widget.TEXT, {
       ...Styles.PET,
@@ -58,8 +60,8 @@ Page({
       src: getInteractionFrame(pet.id, profile.selectedFormId, "idle"),
       auto_scale: true
     });
-    createWidget(widget.TEXT, { ...Styles.STEPS, text: `${currentSteps} STEPS` });
-    const foodLabel = createWidget(widget.TEXT, { ...Styles.FOOD, text: `${profile.foodBalance} FOOD` });
+    createWidget(widget.TEXT, { ...Styles.STEPS, text: `${currentSteps} ${t("steps_label")}` });
+    const foodLabel = createWidget(widget.TEXT, { ...Styles.FOOD, text: `${profile.foodBalance} ${t("food_label")}` });
     const growthLabel = createWidget(widget.TEXT, {
       ...Styles.GROWTH,
       text: ""
@@ -70,7 +72,7 @@ Page({
       ...Styles.NOTE,
       text: result.earnedFood > 0
         ? `WALK REWARD +${result.earnedFood}`
-        : "Walk 1,000 steps to earn food"
+        : t("no_food")
     });
 
     const buttonSlots = [
@@ -92,7 +94,7 @@ Page({
       const selectedPet = getPetById(profile.selectedPetId);
       const view = createHomeView({ profile, collections });
       setText(petLabel, selectedPet.name.toUpperCase());
-      setText(foodLabel, `${profile.foodBalance} FOOD`);
+      setText(foodLabel, `${profile.foodBalance} ${t("food_label")}`);
       setText(growthLabel, view.growthText);
       setText(formLabel, view.formText);
       setText(collectionLabel, view.collectionText);
@@ -141,6 +143,10 @@ Page({
         applyState(applyFormCycleAction({ profile, collections }), "idle");
       } else if (action === "next") {
         applyState(applyPetCycleAction({ profile, collections }), "idle");
+      } else if (action === "collection") {
+        push({ url: "page/collection/collection" });
+      } else if (action === "history") {
+        push({ url: "page/history/history" });
       } else if (action.indexOf("choice:") === 0) {
         applyState(applyChoiceAction({ profile, collections }, action.slice(7)), "idle");
       }

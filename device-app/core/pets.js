@@ -2,10 +2,13 @@ import { DEFAULT_FORM_ID, DEFAULT_PET_ID } from "./constants.js";
 
 export const PET_ROSTER = [
   { id: "pixel-cat", name: "Pixel Cat" },
-  { id: "pixel-dog", name: "Pixel Dog" },
-  { id: "pixel-bunny", name: "Pixel Bunny" },
+  { id: "pixel-dragon", name: "Pixel Dragon" },
+  { id: "pixel-fox", name: "Pixel Fox" },
   { id: "pixel-hamster", name: "Pixel Hamster" },
-  { id: "pixel-fox", name: "Pixel Fox" }
+  { id: "pixel-owl", name: "Pixel Owl" },
+  { id: "pixel-penguin", name: "Pixel Penguin" },
+  { id: "pixel-rabbit", name: "Pixel Rabbit" },
+  { id: "pixel-shiba", name: "Pixel Shiba" }
 ];
 
 export function getPetById(petId) {

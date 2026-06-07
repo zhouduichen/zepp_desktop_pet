@@ -20,8 +20,8 @@ const DEFAULT_BUTTONS = [
   { label: "PET", action: "pet" },
   { label: "PLAY", action: "play" },
   { label: "EVO", action: "evolve" },
-  { label: "FORM", action: "form" },
-  { label: "NEXT", action: "next" }
+  { label: "COLLECTION", action: "collection" },
+  { label: "HISTORY", action: "history" }
 ];
 const RARE_EXPERIENCE_TARGET = 800;
 const SECRET_AFFINITY_TARGET = 150;
@@ -59,8 +59,8 @@ function branchChoiceButtons(choices) {
   while (labels.length < 4) labels.push(EMPTY_BUTTON);
   return [
     ...labels,
-    { label: "FORM", action: "form" },
-    { label: "NEXT", action: "next" }
+    { label: "COLLECTION", action: "collection" },
+    { label: "HISTORY", action: "history" }
   ];
 }
 

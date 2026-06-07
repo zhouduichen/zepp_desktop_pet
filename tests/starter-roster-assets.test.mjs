@@ -5,7 +5,7 @@ import path from "node:path";
 import zlib from "node:zlib";
 import { validatePetPack } from "../core/pet-pack.js";
 
-const rosterIds = ["pixel-cat", "pixel-dog", "pixel-bunny", "pixel-hamster", "pixel-fox"];
+const rosterIds = ["pixel-cat", "pixel-dragon", "pixel-fox", "pixel-hamster", "pixel-owl", "pixel-penguin", "pixel-rabbit", "pixel-shiba"];
 const requiredForms = ["baby", "teen", "active", "steady", "explorer", "rare", "secret"];
 const expectedSize = 128;
 const actions = {

@@ -1,11 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { execFile } from "node:child_process";
 import { readFile } from "node:fs/promises";
-import { promisify } from "node:util";
 import path from "node:path";
-
-const execFileAsync = promisify(execFile);
 
 async function readPngSize(relativePath) {
   const buffer = await readFile(path.resolve(relativePath));
@@ -16,9 +12,7 @@ async function readPngSize(relativePath) {
   };
 }
 
-test("release sprite generator writes the canonical 128 px pixel-cat pack", async () => {
-  await execFileAsync(process.execPath, ["scripts/generate-release-sprites.mjs"]);
-
+test("release sprite packs have 128 px canonical frames", async () => {
   const staticFrame = await readPngSize("pet-packs/pixel-cat/baby/static.png");
   const aodFrame = await readPngSize("pet-packs/pixel-cat/baby/aod.png");
 

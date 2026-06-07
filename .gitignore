@@ -8,3 +8,6 @@ zeus-test/
 patch-path.js
 patch-zpm.js
 
+# Machine-specific npm config
+.npmrc
+

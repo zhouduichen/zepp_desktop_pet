@@ -3,7 +3,7 @@
   "id": "pixel-hamster",
   "name": "Pixel Hamster",
   "author": "Zepp Pet Universe",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "minimumApiLevel": "3.0",
   "screenShapes": [
     "r",

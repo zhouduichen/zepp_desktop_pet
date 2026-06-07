@@ -112,9 +112,9 @@ test("applyPetCycleAction switches pet and ensures that pet has a collection", (
     collections: []
   });
 
-  assert.equal(result.profile.selectedPetId, "pixel-dog");
+  assert.equal(result.profile.selectedPetId, "pixel-dragon");
   assert.equal(result.profile.selectedFormId, "baby");
-  assert.deepEqual(getCollectionForPet(result.collections, "pixel-dog").unlockedFormIds, ["baby"]);
+  assert.deepEqual(getCollectionForPet(result.collections, "pixel-dragon").unlockedFormIds, ["baby"]);
 });
 
 test("createHomeView exposes evolution and choice button labels", () => {
@@ -135,6 +135,6 @@ test("createHomeView exposes evolution and choice button labels", () => {
   });
 
   assert.equal(normal.formText, "BABY 60%");
-  assert.deepEqual(normal.buttons.map((button) => button.label), ["FEED", "PET", "PLAY", "EVO", "FORM", "NEXT"]);
-  assert.deepEqual(choice.buttons.map((button) => button.label), ["ACTIVE", "STEADY", "", "", "FORM", "NEXT"]);
+  assert.deepEqual(normal.buttons.map((button) => button.label), ["FEED", "PET", "PLAY", "EVO", "COLLECTION", "HISTORY"]);
+  assert.deepEqual(choice.buttons.map((button) => button.label), ["ACTIVE", "STEADY", "", "", "COLLECTION", "HISTORY"]);
 });

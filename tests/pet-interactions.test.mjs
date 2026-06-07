@@ -67,10 +67,10 @@ test("playPet adds lightweight experience and affinity", () => {
 
 test("getInteractionFrame maps actions to existing pet sprite frames", () => {
   assert.equal(getInteractionFrame("pixel-cat", "idle"), "pets/pixel-cat/baby/static.png");
-  assert.equal(getInteractionFrame("pixel-dog", "feed"), "pets/pixel-dog/baby/feed_7.png");
-  assert.equal(getInteractionFrame("pixel-bunny", "pet"), "pets/pixel-bunny/baby/tap_3.png");
+  assert.equal(getInteractionFrame("pixel-dragon", "feed"), "pets/pixel-dragon/baby/feed_7.png");
+  assert.equal(getInteractionFrame("pixel-fox", "pet"), "pets/pixel-fox/baby/tap_3.png");
   assert.equal(getInteractionFrame("pixel-hamster", "play"), "pets/pixel-hamster/baby/happy_4.png");
-  assert.equal(getInteractionFrame("pixel-fox", "noFood"), "pets/pixel-fox/baby/no_food_3.png");
+  assert.equal(getInteractionFrame("pixel-rabbit", "noFood"), "pets/pixel-rabbit/baby/no_food_3.png");
   assert.equal(getInteractionFrame("pixel-cat", "active", "idle"), "pets/pixel-cat/active/static.png");
   assert.equal(getInteractionFrame("pixel-cat", "rare", "play"), "pets/pixel-cat/rare/happy_4.png");
 });

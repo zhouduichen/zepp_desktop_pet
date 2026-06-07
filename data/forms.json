@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "definitions": {
+    "baby": { "displayName": "Baby", "order": 0, "type": "base", "isStartForm": true },
+    "teen": { "displayName": "Teen", "order": 1, "type": "base", "experienceRequired": 200 },
+    "active": { "displayName": "Active", "order": 2, "type": "mature", "branch": "active" },
+    "steady": { "displayName": "Steady", "order": 3, "type": "mature", "branch": "steady" },
+    "explorer": { "displayName": "Explorer", "order": 4, "type": "mature", "branch": "explorer" },
+    "rare": { "displayName": "Rare", "order": 5, "type": "rare", "hidden": false },
+    "secret": { "displayName": "Secret", "order": 6, "type": "secret", "hidden": true }
+  }
+}

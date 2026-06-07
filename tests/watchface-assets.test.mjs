@@ -32,7 +32,7 @@ test("watchface target assets contain only the lightweight current-pet face pack
 
       assert.equal(await exists(path.join(assetRoot, "teen", "static.png")), false);
       assert.equal(await exists(path.join(assetRoot, "baby", "feed_0.png")), false);
-      assert.equal(await exists(path.join("watchface-spike", "assets", `${targetName}.${shape}`, "pixel-dog")), false);
+      assert.equal(await exists(path.join("watchface-spike", "assets", `${targetName}.${shape}`, "pixel-dragon")), false);
     }
   }
 });
